@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  string: MyString
+  day: MyString
+  datetime: MyString
+  place: MyString
+  string: MyString
+  content: MyString
+  text: MyString
+  image: MyString
+  string: MyString
+  cheering_team: MyString
+  string: MyString
+  organizer_id: MyString
+  integer: MyString
+
+two:
+  title: MyString
+  string: MyString
+  day: MyString
+  datetime: MyString
+  place: MyString
+  string: MyString
+  content: MyString
+  text: MyString
+  image: MyString
+  string: MyString
+  cheering_team: MyString
+  string: MyString
+  organizer_id: MyString
+  integer: MyString
