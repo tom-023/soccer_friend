@@ -1,0 +1,15 @@
+current directory: /Users/watanabeatsushi/original_app/soccer_friend/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.5/ext/bootsnap
+/Users/watanabeatsushi/.rbenv/versions/2.6.3/bin/ruby -I /Users/watanabeatsushi/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20191220-26170-ko0z6d.rb extconf.rb
+creating Makefile
+
+current directory: /Users/watanabeatsushi/original_app/soccer_friend/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/watanabeatsushi/original_app/soccer_friend/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/watanabeatsushi/original_app/soccer_friend/vendor/bundle/ruby/2.6.0/gems/bootsnap-1.4.5/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20191220-26170-ikl4ey/bootsnap

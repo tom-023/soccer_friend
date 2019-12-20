@@ -1,0 +1,15 @@
+current directory: /Users/watanabeatsushi/original_app/soccer_friend/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+/Users/watanabeatsushi/.rbenv/versions/2.6.3/bin/ruby -I /Users/watanabeatsushi/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20191220-9892-1sgs14y.rb extconf.rb
+creating Makefile
+
+current directory: /Users/watanabeatsushi/original_app/soccer_friend/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/watanabeatsushi/original_app/soccer_friend/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/watanabeatsushi/original_app/soccer_friend/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20191220-9892-1bizo7n/skiptrace/internal
