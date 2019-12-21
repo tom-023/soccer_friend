@@ -1,0 +1,10 @@
+<h1><%= t('view.details') %></h1>
+<p><%= t('view.title') %>: <%= @event.title %></p>
+<p><%= t('view.content') %>: <%= @event.day.strftime("%Y-%m-%d %H:%M") %></p>
+<p><%= t('view.content') %>: <%= @event.place %></p>
+<p><%= t('view.content') %>: <%= @event.cheering_team %></p>
+<p><%= t('view.content') %>: <%= @event.content %></p>
+
+<div class="btn">
+  <%= link_to t('view.edit'), edit_event_path %>
+</div>

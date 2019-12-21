@@ -28,9 +28,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    binding.irb
     @event = Event.new(event_params)
     @event.organizer = current_user
+        binding.irb
     if params[:back]
       render :new
     else
@@ -42,7 +42,20 @@ class EventsController < ApplicationController
     end
   end
 
+  def update
+      if @event.update(event_params)
+        flash[:update] = t'flash.update'
+        redirect_to event_path
+      else
+        render :edit
+      end
+  end
 
+  def destroy
+    @event.destroy
+    flash[:delete] = t'flash.delete'
+    redirect_to events_path
+  end
 
   private
 

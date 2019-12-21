@@ -1,10 +1,10 @@
-<%= form_with(model: event, local: true) do |form| %>
+<%= form_with(model: @event, local: true) do |form| %>
   <!--エラーがあった時にメッセージを出力する -->
-  <% if event.errors.any? %>
+  <% if @event.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
       <ul>
-      <% event.errors.full_messages.each do |message| %>
+      <% @event.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -24,10 +24,10 @@
 
 
   <div class="form_field">
-    <%= form.label :day, '日程' %>
+    <%= form.label :day, 'キックオフ' %>
     <%= raw sprintf(
       form.datetime_select(
-        :deadline,
+        :day,
         {
           start_year: Time.zone.now.year,# 選択可能な開始年
           end_year:   Time.zone.now.next_year.year,# 選択可能な終了年
@@ -46,7 +46,7 @@
 
   <div class="field">
     <%= form.label :place, 'スタジアム' %>
-    <p><%= form.text_field :day %></p>
+    <p><%= form.text_field :place %></p>
   </div>
 
   <div class="field">
