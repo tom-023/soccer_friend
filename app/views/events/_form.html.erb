@@ -1,4 +1,4 @@
-<%= form_with(model: @event, local: true) do |form| %>
+<%= form_with(model: @event, local: true, url: choose_new_or_edit) do |form| %>
   <!--エラーがあった時にメッセージを出力する -->
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -58,5 +58,3 @@
     <%= form.submit value = "内容を確認" %>
   </div>
 <% end %>
-
-<%# url: choose_new_or_edit %>

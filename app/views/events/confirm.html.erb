@@ -1,9 +1,18 @@
 <h3>以下の内容で、送信する。</h3>
 
-<%= form_with(model: @event, local: true) do |form| %>
+<%= form_with(model: @event, url: events_path, local: true) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :day %>
+  <%= form.hidden_field :place %>
+  <%= form.hidden_field :cheering_team %>
   <%= form.hidden_field :content %>
 
-  <p>本文:<%= @event.content %></p>
+  <p>タイトル:<%= @event.title %></p>
+  <p>キックオフ:<%= @event.day %></p>
+  <p>スタジアム:<%= @event.place %></p>
+  <p>応援チーム:<%= @event.cheering_team %></p>
+  <p>内容:<%= @event.content %></p>
+
   <%= form.submit  "登録する" %>
 
   <%= form.submit "戻る", name: 'back' %>

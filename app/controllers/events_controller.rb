@@ -14,12 +14,11 @@ class EventsController < ApplicationController
     end
   end
 
-  # def confirm
-  #   binding.irb
-  #   @event = Events.new(event_params)
-  #   @event.organizer = current_user
-  #   render :new if @event.invalid?
-  # end
+  def confirm
+    @event = Event.new(event_params)
+    @event.organizer = current_user
+    render :new if @event.invalid?
+  end
 
   def show
   end
@@ -30,14 +29,13 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.organizer = current_user
-        binding.irb
     if params[:back]
       render :new
     else
       if @event.save
         redirect_to events_path, notice: "イベントを作成しました！"
       else
-        render 'new'
+        render :new
       end
     end
   end
