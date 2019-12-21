@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   root 'events#index'
 
   resources :events
-end
+    # collection do
+    #   post :confirm
+    # end
+  end

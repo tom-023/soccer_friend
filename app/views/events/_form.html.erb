@@ -1,0 +1,62 @@
+<%= form_with(model: event, local: true) do |form| %>
+  <!--エラーがあった時にメッセージを出力する -->
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <ul>
+      <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- 文章の記載フォーム -->
+  <div class="field">
+    <%= form.label :title, 'タイトル' %>
+    <p><%= form.text_field :title %></p>
+  </div>
+
+  <div class="field">
+    <%= form.label :content, '募集内容' %>
+    <p><%= form.text_field :content, placeholder: "募集詳細を記入してください。" %></p>
+  </div>
+
+
+  <div class="form_field">
+    <%= form.label :day, '日程' %>
+    <%= raw sprintf(
+      form.datetime_select(
+        :deadline,
+        {
+          start_year: Time.zone.now.year,# 選択可能な開始年
+          end_year:   Time.zone.now.next_year.year,# 選択可能な終了年
+          use_two_digit_numbers: true,# 月日を2桁の値で表示
+          date_separator: '%s',# 年, 月
+          datetime_separator: '%s',# 日
+          time_separator: '%s'# 時
+        },# オプション
+        { class: 'date-select' }# htmlオプションを指定する場合は別で指定
+      ),
+      '年 ', '月 ', '日 ', '時 ') + '分'# 分 は最後につけ加えられる
+    %>
+  <%# 下のコードはカレンダータイプ %>
+  <%# <%= form.datetime_field :deadline %>
+  </div>
+
+  <div class="field">
+    <%= form.label :place, 'スタジアム' %>
+    <p><%= form.text_field :day %></p>
+  </div>
+
+  <div class="field">
+    <%= form.label :cheering_team, '応援チーム' %>
+    <p><%= form.text_field :cheering_team %></p>
+  </div>
+
+  <div class="actions">
+    <%= form.submit value = "内容を確認" %>
+  </div>
+<% end %>
+
+<%# url: choose_new_or_edit %>
