@@ -1,3 +1,20 @@
+
+
+
+<%= form_with(method: :get, url: events_path, local: true) do |f| %>
+  <%= f.label :support_team, t('view.support_team') %>
+  <%= f.text_field :support_team %>
+
+  <%= f.label :tag, t('view.tag') %>
+  <%= f.select :tag_id, Tag.pluck(:title, :id), { include_blank: true } %>
+
+  <%= f.submit '検索' %>
+<% end %>
+
+<span class="label label-default"><%= link_to t('view.day_sort'), events_path(sort_expired: "true") %></span>
+
+
+
 <% @events.each do |event| %>
   <article >
     <span class="date"><%= event.created_at.strftime('%Y/%m/%d') %></span>

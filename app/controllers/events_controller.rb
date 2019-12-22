@@ -12,6 +12,7 @@ class EventsController < ApplicationController
     else
       @event = Event.new
     end
+    @event.taggings.build
   end
 
   def confirm
@@ -63,7 +64,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :day, :place, :content, :cheering_team, :organizer_id, label_ids: [])
+    params.require(:event).permit(:title, :day, :place, :content, :cheering_team, :organizer_id, tag_ids: [])
   end
 
   def ensure_correct_user

@@ -54,6 +54,12 @@
     <p><%= form.text_field :cheering_team %></p>
   </div>
 
+  <% Tag.all.each do |tag| %>
+    <%= form.check_box :tag_ids, {multiple: true, checked: tag[:checked],
+                                    disabled: tag[:disabled], include_hidden: false }, tag[:id] %>
+    <label style="background-color: aquamarine"><%= tag.title %></label>
+  <% end %>
+
   <div class="actions">
     <%= form.submit value = "内容を確認" %>
   </div>
