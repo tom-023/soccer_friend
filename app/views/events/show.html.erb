@@ -5,6 +5,18 @@
 <p><%= t('view.content') %>: <%= @event.cheering_team %></p>
 <p><%= t('view.content') %>: <%= @event.content %></p>
 
+<p><%= 'イベント参加者' %></p>
+<p>未実装</p>
+
+<% unless @event.organizer_id == current_user.id %>
+  <% if @participant_management.present? %>
+    <%= link_to 'イベントをキャンセルする', participant_management_path(id: @participant_management.id), method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'イベントに参加する', participant_managements_path(event_id: @event.id), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+
+
 <div class="btn">
   <%= link_to t('view.edit'), edit_event_path %>
 </div>

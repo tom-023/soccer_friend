@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :events, foreign_key: :organizer_id
-  has_many :participant_managements, dependent: :destroy
+  has_many :participant_managements, foreign_key: :participant_id, dependent: :destroy
 end

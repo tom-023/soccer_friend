@@ -10,4 +10,6 @@ Rails.application.routes.draw do
       patch :confirm
     end
   end
+
+  resources :participant_managements, only: [:create, :destroy]
 end

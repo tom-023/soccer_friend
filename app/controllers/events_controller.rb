@@ -21,6 +21,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @participant_management = current_user.participant_managements.find_by(event_id: @event.id)
   end
 
   def edit
