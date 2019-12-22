@@ -1,5 +1,8 @@
 {
   "name": "soccer_friend",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "4",
+    "jquery": "^3.4.1"
+  }
 }
