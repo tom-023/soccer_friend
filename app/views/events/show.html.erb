@@ -16,6 +16,19 @@
   <% end %>
 <% end %>
 
+<% @users.each do |user| %>
+  <% if user.id != current_user.id %>
+  <ul>
+    <li>
+      <div class="item">
+        <%= user.name %>
+        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
+      </div>
+    </li>
+  </ul>
+  <% end %>
+<% end %>
+
 
 <div class="btn">
   <%= link_to t('view.edit'), edit_event_path %>

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_22_021425) do
+ActiveRecord::Schema.define(version: 2019_12_22_063517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id", null: false
+    t.integer "recipient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
+    t.index ["sender_id", "recipient_id"], name: "index_conversations_on_sender_id_and_recipient_id", unique: true
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "title", default: "", null: false
@@ -25,6 +35,17 @@ ActiveRecord::Schema.define(version: 2019_12_22_021425) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organizer_id"], name: "index_events_on_organizer_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "conversation_id", null: false
+    t.bigint "user_id", null: false
+    t.boolean "read", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "participant_managements", force: :cascade do |t|
@@ -72,5 +93,7 @@ ActiveRecord::Schema.define(version: 2019_12_22_021425) do
   end
 
   add_foreign_key "events", "users", column: "organizer_id"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "participant_managements", "users", column: "participant_id"
 end

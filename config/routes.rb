@@ -11,5 +11,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :conversations do
+    resources :messages
+  end
+
   resources :participant_managements, only: [:create, :destroy]
 end
