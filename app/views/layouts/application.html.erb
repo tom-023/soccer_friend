@@ -22,6 +22,7 @@
       <p class="admin_btn col-xs-offset-1 col-xs-10 col-xs-offset-1"><%= link_to "管理画面", "/admin" %></p>
     <% end %>
     <% if user_signed_in? %>
+      <%= link_to "プロフィール", user_path(id: current_user.id) %>
       <%= link_to "イベント投稿", events_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>

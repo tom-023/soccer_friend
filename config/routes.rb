@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
   root 'events#index'
+  # get 'users/show'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
+  devise_for :users, controllers: {
+          registrations: 'users/registrations'
+  }
+  resources :users, only: [:show]
 
   resources :events do
     collection do

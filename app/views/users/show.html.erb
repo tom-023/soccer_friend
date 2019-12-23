@@ -1,0 +1,12 @@
+<h1>名前 : <%= @user.name %></h1>
+<p>応援チーム : <%= @user.support_team %></p>
+<p>サポーター歴 : <%= @user.support_history %>年</p>
+<p>自己紹介 : <%= @user.introduce %></p>
+
+<div class="btn">
+  <%= link_to 'プロフィールの編集', edit_user_registration_path(@user.id) %>
+</div>
+
+<div class="btn">
+  <%= link_to '退会処理', user_registration_path, method: :delete %>
+</div>
