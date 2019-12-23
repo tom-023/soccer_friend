@@ -6,7 +6,17 @@
 <p><%= t('view.content') %>: <%= @event.content %></p>
 
 <p><%= 'イベント参加者' %></p>
-<p>未実装</p>
+<% @event_participant_users.each do |event_participant_user| %>
+  <ul>
+    <li>
+      <%= event_participant_user.name %>
+      <% if event_participant_user.id != current_user.id %>
+        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: event_participant_user.id), method: :post %>
+      <% end %>
+    </li>
+  </ul>
+<% end %>
+
 
 <% unless @event.organizer_id == current_user.id %>
   <% if @participant_management.present? %>
@@ -16,20 +26,6 @@
   <% end %>
 <% end %>
 
-<% @users.each do |user| %>
-  <% if user.id != current_user.id %>
-  <ul>
-    <li>
-      <div class="item">
-        <%= user.name %>
-        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
-      </div>
-    </li>
-  </ul>
-  <% end %>
-<% end %>
-
-
 <div class="btn">
-  <%= link_to t('view.edit'), edit_event_path %>
+  <%= link_to '編集', edit_event_path %>
 </div>
