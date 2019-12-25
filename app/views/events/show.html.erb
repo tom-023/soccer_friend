@@ -5,6 +5,14 @@
 <p><%= t('view.content') %>: <%= @event.cheering_team %></p>
 <p><%= t('view.content') %>: <%= @event.content %></p>
 
+
+<td>
+  <% @event.tags.each do |tag| %>
+    <%= tag.title %>
+  <% end %>
+</td>
+
+
 <p><%= 'イベント参加者' %></p>
 <% @event_participant_users.each do |event_participant_user| %>
   <ul>
@@ -16,7 +24,6 @@
     </li>
   </ul>
 <% end %>
-
 
 <% unless @event.organizer_id == current_user.id %>
   <% if @participant_management.present? %>

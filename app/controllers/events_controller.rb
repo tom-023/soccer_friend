@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   def new
     if params[:back]
       @event = Event.new(event_params)
+      # @event.taggings.build
     else
       @event = Event.new
     end
@@ -30,6 +31,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    binding.irb
     @event = Event.new(event_params)
     @event.organizer = current_user
     if params[:back]
