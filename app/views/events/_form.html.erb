@@ -11,17 +11,83 @@
     </div>
   <% end %>
 
+
+
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="bs-component">
+        <form>
+          <fieldset>
+
+            <div class="form-group">
+              <%= form.label :title, 'タイトル' %>
+              <%= form.text_field :title, :class => 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= form.label :place, 'スタジアム' %>
+              <%= form.text_field :place, :class => 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= form.label :cheering_team, '応援チーム' %>
+              <%= form.select :cheering_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
+                                              "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
+                                              "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
+                                              "鹿島アントラーズ","浦和レッズ","大宮アルディージャ",
+                                              "ジェフユナイテッド千葉","柏レイソル","FC東京",
+                                              "東京ヴェルディ","FC町田ゼルビア","川崎フロンターレ",
+                                              "横浜F・マリノス","横浜FC","Y.S.C.C.横浜",
+                                              "湘南ベルマーレ","SC相模原","ザスパクサツ群馬",
+                                              "ヴァンフォーレ甲府","松本山雅FC","AC長野パルセイロ",
+                                              "カターレ富山","アルビレックス新潟","ツエーゲン金沢",
+                                              "FC岐阜","清水エスパルス","ジュビロ磐田","藤枝MYFC",
+                                              "アスルクラロ沼津","名古屋グランパス","京都サンガF.C.",
+                                              "ガンバ大阪","セレッソ大阪","ヴィッセル神戸",
+                                              "ファジアーノ岡山","ガイナーレ鳥取","サンフレッチェ広島",
+                                              "レノファ山口FC","カマタマーレ讃岐","徳島ヴォルティス",
+                                              "愛媛FC","アビスパ福岡","ギラヴァンツ北九州",
+                                              "サガン鳥栖","V・ファーレン長崎","大分トリニータ",
+                                              "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {:prompt => "選択してください"},
+                                              {:class => 'form-control', :id => 'exampleSelect1'} %>
+            </div>
+
+
+
+            <div class="form-group">
+              <%= form.label :content, '募集内容' %>
+              <%= form.text_field :content, :placeholder => "募集詳細を記入してください。",
+                :class => "form-control", :id => "exampleTextarea", :rows => "10" %>
+            </div>
+
+
+            <div class="form-group">
+              <%= form.label :tag_ids, 'タグ' %>
+              <div class="form-check">
+                <label type="checkbox" value="">
+                  <% Tag.all.each do |tag| %>
+                    <%= form.check_box :tag_ids, {multiple: true, checked: tag[:checked],
+                                                    disabled: tag[:disabled], include_hidden: false }, tag[:id] %>
+                    <%= tag.title %>
+                  <% end %>
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Go!!</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
   <!-- 文章の記載フォーム -->
-  <div class="field">
-    <%= form.label :title, 'タイトル' %>
-    <p><%= form.text_field :title %></p>
-  </div>
-
-  <div class="field">
-    <%= form.label :content, '募集内容' %>
-    <p><%= form.text_field :content, placeholder: "募集詳細を記入してください。" %></p>
-  </div>
-
 
   <div class="form_field">
     <%= form.label :day, 'キックオフ' %>
@@ -44,40 +110,4 @@
   <%# <%= form.datetime_field :deadline %>
   </div>
 
-  <div class="field">
-    <%= form.label :place, 'スタジアム' %>
-    <p><%= form.text_field :place %></p>
-  </div>
-
-  <div class="field">
-    <%= form.label :cheering_team, '応援チーム' %>
-    <p><%= form.select :cheering_team, ["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
-                                        "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
-                                        "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
-                                        "鹿島アントラーズ","浦和レッズ","大宮アルディージャ",
-                                        "ジェフユナイテッド千葉","柏レイソル","FC東京",
-                                        "東京ヴェルディ","FC町田ゼルビア","川崎フロンターレ",
-                                        "横浜F・マリノス","横浜FC","Y.S.C.C.横浜",
-                                        "湘南ベルマーレ","SC相模原","ザスパクサツ群馬",
-                                        "ヴァンフォーレ甲府","松本山雅FC","AC長野パルセイロ",
-                                        "カターレ富山","アルビレックス新潟","ツエーゲン金沢",
-                                        "FC岐阜","清水エスパルス","ジュビロ磐田","藤枝MYFC",
-                                        "アスルクラロ沼津","名古屋グランパス","京都サンガF.C.",
-                                        "ガンバ大阪","セレッソ大阪","ヴィッセル神戸",
-                                        "ファジアーノ岡山","ガイナーレ鳥取","サンフレッチェ広島",
-                                        "レノファ山口FC","カマタマーレ讃岐","徳島ヴォルティス",
-                                        "愛媛FC","アビスパ福岡","ギラヴァンツ北九州",
-                                        "サガン鳥栖","V・ファーレン長崎","大分トリニータ",
-                                        "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], :prompt => "選択してください" %></p>
-  </div>
-
-  <% Tag.all.each do |tag| %>
-    <%= form.check_box :tag_ids, {multiple: true, checked: tag[:checked],
-                                    disabled: tag[:disabled], include_hidden: false }, tag[:id] %>
-    <label style="background-color: aquamarine"><%= tag.title %></label>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit value = "内容を確認" %>
-  </div>
 <% end %>
