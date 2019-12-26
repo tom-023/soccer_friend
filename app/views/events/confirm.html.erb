@@ -1,5 +1,3 @@
-<h3>以下の内容で、送信する。</h3>
-
 <%= form_with(model: @event, url: events_path, local: true) do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :day %>
@@ -11,17 +9,38 @@
     <%= hidden_field_tag "event[tag_ids][]", id %>
   <% end %>
 
-  <p>タイトル:<%= @event.title %></p>
-  <p>キックオフ:<%= @event.day %></p>
-  <p>スタジアム:<%= @event.place %></p>
-  <p>応援チーム:<%= @event.cheering_team %></p>
+<br>
+  <div class="card border-dark mb-3" style="max-width: 30rem;">
+    <div class="card-header"><h2><%= @event.title %></h2></div>
+    <div class="card-body">
+      <h3>キックオフ</h3>
+      <p class="card-text"><%= @event.day.strftime("%Y-%m-%d %H:%M") %></p>
+      <br>
+      <h3>スタジアム</h3>
+      <p class="card-text"><%= @event.place %></p>
+      <br>
+      <h3>応援チーム</h3>
+      <p class="card-text"><%= @event.cheering_team %></p>
+      <br>
+      <h3>募集内容</h3>
+      <p class="card-text"><%= @event.content %></p>
+      <br>
+      <% @event.tags.each do |tag| %>
+        <%= tag.title %>
+      <% end %>
+    </div>
+  </div>
 
-  <% @event.tags.each do |tag| %>
-    <%= tag.title %>
-  <% end %>
+<p>こちらの内容で募集します。</p>
 
-
-  <%= form.submit  "登録する" %>
-
-  <%= form.submit "戻る", name: 'back' %>
+<div class="row center-block text-center">
+    <div class="col-1">
+    </div>
+    <div class="col-5">
+      <input type="button" onclick="history.back()" value="戻る" class="btn btn-outline-secondary btn-block">
+    </div>
+    <div class="col-5">
+      <button type="submit" class="btn btn-outline-primary btn-block">新規登録</button>
+    </div>
+</div>
 <% end %>

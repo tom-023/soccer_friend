@@ -1,19 +1,28 @@
 <h1><%= t('view.details') %></h1>
-<p><%= t('view.title') %>: <%= @event.title %></p>
-<p><%= t('view.content') %>: <%= @event.day.strftime("%Y-%m-%d %H:%M") %></p>
-<p><%= t('view.content') %>: <%= @event.place %></p>
-<p><%= t('view.content') %>: <%= @event.cheering_team %></p>
-<p><%= t('view.content') %>: <%= @event.content %></p>
 
 
-<td>
-  <% @event.tags.each do |tag| %>
-    <%= tag.title %>
-  <% end %>
-</td>
+<div class="card border-dark mb-3" style="max-width: 30rem;">
+  <div class="card-header"><h2><%= @event.title %></h2></div>
+  <div class="card-body">
+    <h3>キックオフ</h3>
+    <p class="card-text"><%= @event.day.strftime("%Y-%m-%d %H:%M") %></p>
+    <br>
+    <h3>スタジアム</h3>
+    <p class="card-text"><%= @event.place %></p>
+    <br>
+    <h3>応援チーム</h3>
+    <p class="card-text"><%= @event.cheering_team %></p>
+    <br>
+    <h3>募集内容</h3>
+    <p class="card-text"><%= @event.content %></p>
+    <br>
+    <% @event.tags.each do |tag| %>
+      <%= tag.title %>
+    <% end %>
+  </div>
+</div>
 
-
-<p><%= 'イベント参加者' %></p>
+<p><%= '参加者一覧' %></p>
 <% @event_participant_users.each do |event_participant_user| %>
   <ul>
     <li>
@@ -33,6 +42,15 @@
   <% end %>
 <% end %>
 
-<div class="btn">
-  <%= link_to '編集', edit_event_path %>
+<div class="row center-block text-center">
+    <div class="col-1">
+    </div>
+    <div class="col-5">
+      <input type="button" onclick="history.back()" value="戻る" class="btn btn-outline-secondary btn-block">
+    </div>
+    <div class="col-5">
+      <div class="btn btn-outline-success btn-block">
+        <%= link_to '編集', edit_event_path %>
+      </div>
+    </div>
 </div>

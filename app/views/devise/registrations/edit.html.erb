@@ -1,73 +1,8 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>編集 <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :name%><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+<%= render 'form' %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :support_team%><br />
-    <%= f.select :support_team, ["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
-                                 "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
-                                 "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
-                                 "鹿島アントラーズ","浦和レッズ","大宮アルディージャ",
-                                 "ジェフユナイテッド千葉","柏レイソル","FC東京",
-                                 "東京ヴェルディ","FC町田ゼルビア","川崎フロンターレ",
-                                 "横浜F・マリノス","横浜FC","Y.S.C.C.横浜",
-                                 "湘南ベルマーレ","SC相模原","ザスパクサツ群馬",
-                                 "ヴァンフォーレ甲府","松本山雅FC","AC長野パルセイロ",
-                                 "カターレ富山","アルビレックス新潟","ツエーゲン金沢",
-                                 "FC岐阜","清水エスパルス","ジュビロ磐田","藤枝MYFC",
-                                 "アスルクラロ沼津","名古屋グランパス","京都サンガF.C.",
-                                 "ガンバ大阪","セレッソ大阪","ヴィッセル神戸",
-                                 "ファジアーノ岡山","ガイナーレ鳥取","サンフレッチェ広島",
-                                 "レノファ山口FC","カマタマーレ讃岐","徳島ヴォルティス",
-                                 "愛媛FC","アビスパ福岡","ギラヴァンツ北九州",
-                                 "サガン鳥栖","V・ファーレン長崎","大分トリニータ",
-                                 "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], :prompt => "選択してください" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :support_history %><br />
-    <%= f.number_field :support_history,min:0,max:100,step:1 %>年
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-<!-- 確認パスワードの要求を消してみた -->
-  <!-- <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div> -->
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
 
 <h3>Cancel my account</h3>
 

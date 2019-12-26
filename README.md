@@ -56,3 +56,5 @@ https://cacoo.com/diagrams/y9RGKKS4lKelGtCA/1B3EC
 - cancancan
 - letter_opener_web
 - webpacker
+- CarrierWave
+- mini_magick

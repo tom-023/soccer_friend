@@ -1,16 +1,5 @@
-<%= form_with(model: @event, local: true, url: choose_new_or_edit) do |form| %>
-  <!--エラーがあった時にメッセージを出力する -->
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-      <ul>
-      <% @event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |form| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="row">
     <div class="col-md-6">
@@ -18,39 +7,20 @@
         <form>
           <fieldset>
             <div class="form-group">
-              <%= form.label :title, 'タイトル' %>
-              <%= form.text_field :title, :class => 'form-control' %>
+              <%= form.label :name, '名前' %>
+              <%= form.text_field :name, :class => 'form-control' %>
             </div>
             <br>
-            <div class="form_group">
-              <%= form.label :day, 'キックオフ' %>
-            <div class="form-inline">
-              <%= raw sprintf(
-                form.datetime_select(
-                  :day,
-                  {
-                    start_year: Time.zone.now.year,# 選択可能な開始年
-                    end_year:   Time.zone.now.next_year.year,# 選択可能な終了年
-                    use_two_digit_numbers: true,# 月日を2桁の値で表示
-                    date_separator: '%s',# 年, 月
-                    datetime_separator: '%s',# 日
-                    time_separator: '%s'# 時
-                  },# オプション
-                  { class: 'form-control' }# htmlオプションを指定する場合は別で指定
-                ),
-                '年 ', '月 ', '日 ', '時 ') + '分'# 分 は最後につけ加えられる
-              %>
-            </div>
+
+            <div class="field">
+              <%= form.label :email %>
+              <%= form.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control' %>
             </div>
             <br>
+
             <div class="form-group">
-              <%= form.label :place, 'スタジアム' %>
-              <%= form.text_field :place, :class => 'form-control' %>
-            </div>
-            <br>
-            <div class="form-group">
-              <%= form.label :cheering_team, '応援チーム' %>
-              <%= form.select :cheering_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
+              <%= form.label :support_team, '応援チーム' %>
+              <%= form.select :support_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
                                               "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
                                               "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
                                               "鹿島アントラーズ","浦和レッズ","大宮アルディージャ",
@@ -71,24 +41,42 @@
                                               {:class => 'form-control', :id => 'exampleSelect1'} %>
             </div>
             <br>
+
             <div class="form-group">
-              <%= form.label :content, '募集内容' %>
-              <%= form.text_field :content, :placeholder => "募集詳細を記入してください。",
-                :class => "form-control", :id => "exampleTextarea", :rows => "10" %>
+              <%= form.label :support_history %>
+              <div class="form-inline">
+              <%= form.number_field :support_history,min:0,max:100,step:1, :class => 'form-control' %>年
+            </div>
             </div>
             <br>
+
             <div class="form-group">
-              <%= form.label :tag_ids, 'タグ' %>
-              <div class="form-check">
-                <label type="checkbox" value="">
-                  <% Tag.all.each do |tag| %>
-                    <%= form.check_box :tag_ids, {multiple: true, checked: tag[:checked],
-                                                    disabled: tag[:disabled], include_hidden: false }, tag[:id] %>
-                    <%= tag.title %>
-                  <% end %>
-                </label>
-              </div>
+              <%= form.label :introduce, '自己紹介' %>
+              <%= form.text_field :introduce, :class => "form-control", :id => "exampleTextarea", :rows => "10" %>
             </div>
+            <br>
+
+            <div class="form-group">
+              <%= form.label :password %>
+              <%= form.password_field :password, autocomplete: "new-password", :class => 'form-control' %>
+              <% if @minimum_password_length %>
+                <br />
+                <em><%= @minimum_password_length %> characters minimum</em>
+              <% end %>
+            </div>
+            <br>
+
+            <div class="field">
+              <%= form.label :password_confirmation %>
+              <%= form.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control' %>
+            </div>
+            <br>
+            <!-- 確認パスワードの要求を消してみた -->
+              <!-- <div class="field">
+                <%= form.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                <%= form.password_field :current_password, autocomplete: "current-password" %>
+              </div> -->
+
             <div class="row center-block text-center">
                 <div class="col-1">
                 </div>
@@ -96,7 +84,7 @@
                   <input type="button" onclick="history.back()" value="戻る" class="btn btn-outline-secondary btn-block">
                 </div>
                 <div class="col-5">
-                  <button type="submit" class="btn btn-outline-primary btn-block">確認画面</button>
+                  <button type="submit" class="btn btn-outline-primary btn-block">編集する</button>
                 </div>
             </div>
           </fieldset>

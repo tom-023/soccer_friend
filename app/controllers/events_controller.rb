@@ -31,7 +31,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    binding.irb
     @event = Event.new(event_params)
     @event.organizer = current_user
     if params[:back]
