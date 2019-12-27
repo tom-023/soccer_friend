@@ -15,8 +15,15 @@
  *= require_tree .
  *= require_self
  */
-
 /* ↑消しちゃダメ */
+
+
+.site-header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+}
+
 
  /*ページネーション自体のデザイン*/
  .pagination>li>a {

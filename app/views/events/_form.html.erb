@@ -11,9 +11,8 @@
     </div>
   <% end %>
 
-
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-7">
       <div class="bs-component">
         <form>
           <fieldset>
@@ -80,7 +79,7 @@
             <div class="form-group">
               <%= form.label :tag_ids, 'タグ' %>
               <div class="form-check">
-                <label type="checkbox" value="">
+                <label type="form-check-label" value="">
                   <% Tag.all.each do |tag| %>
                     <%= form.check_box :tag_ids, {multiple: true, checked: tag[:checked],
                                                     disabled: tag[:disabled], include_hidden: false }, tag[:id] %>

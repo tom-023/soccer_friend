@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :events, foreign_key: :organizer_id, dependent: :destroy
   has_many :participant_managements, foreign_key: :participant_id, dependent: :destroy
+
+  mount_uploader :icon, ImageUploader
 end

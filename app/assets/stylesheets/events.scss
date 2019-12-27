@@ -1,3 +1,38 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.header_img {
+  position: relative;
+  }
+
+.header_img a {/*aタグを画像の真ん中に*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  /*以下装飾*/
+  margin:0;/*余計な隙間を除く*/
+  font-size: 100px;/*文字サイズ*/
+  border: solid white 5px; /*線で囲う*/
+  padding: 20px;/*文字と線の間の余白*/
+  color: white;/*文字色*/
+  text-decoration: none;/*下線を表示させない*/
+  }
+
+.header_img a:hover{/*カーソルを当てたとき*/
+  background: rgba(255, 255, 255, 0.3);/*背景を半透明に*/
+  }
+
+.header_img img {
+  width: 100%;
+  object-fit: cover;
+  }
+
+#contents {
+  margin: 40px auto;
+  padding: 40px 80px;
+  background-color: #fff
+}

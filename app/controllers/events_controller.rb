@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   # before_action :ensure_correct_user, only: [:edit, :update, :destroy]  
 
   def index
-    @events = Event.all.page(params[:page]).per(3)
+    @events = Event.all.page(params[:page]).per(6)
   end
 
   def new
