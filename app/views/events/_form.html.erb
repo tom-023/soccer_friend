@@ -1,4 +1,4 @@
-<%= form_with(model: @event, local: true, url: choose_new_or_edit) do |form| %>
+<%= form_with(model: @event, local: true, url: choose_new_or_edit, class: "event_form") do |form| %>
   <!--エラーがあった時にメッセージを出力する -->
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -11,18 +11,15 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="col-md-7">
-      <div class="bs-component">
         <form>
           <fieldset>
             <div class="form-group">
-              <%= form.label :title, 'タイトル' %>
+              <h3><%= form.label :title, 'タイトル' %></h3>
               <%= form.text_field :title, :class => 'form-control' %>
             </div>
             <br>
             <div class="form_group">
-              <%= form.label :day, 'キックオフ' %>
+              <h3><%= form.label :day, 'キックオフ' %></h3>
             <div class="form-inline">
               <%= raw sprintf(
                 form.datetime_select(
@@ -43,12 +40,12 @@
             </div>
             <br>
             <div class="form-group">
-              <%= form.label :place, 'スタジアム' %>
+              <h3><%= form.label :place, 'スタジアム' %></h3>
               <%= form.text_field :place, :class => 'form-control' %>
             </div>
             <br>
             <div class="form-group">
-              <%= form.label :cheering_team, '応援チーム' %>
+              <h3><%= form.label :cheering_team, '応援チーム' %></h3>
               <%= form.select :cheering_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
                                               "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
                                               "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
@@ -66,18 +63,17 @@
                                               "レノファ山口FC","カマタマーレ讃岐","徳島ヴォルティス",
                                               "愛媛FC","アビスパ福岡","ギラヴァンツ北九州",
                                               "サガン鳥栖","V・ファーレン長崎","大分トリニータ",
-                                              "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {:prompt => "選択してください"},
-                                              {:class => 'form-control', :id => 'exampleSelect1'} %>
+                                              "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {prompt: '選択してください'},
+                                              {class: 'form-control'} %>
             </div>
             <br>
             <div class="form-group">
-              <%= form.label :content, '募集内容' %>
-              <%= form.text_field :content, :placeholder => "募集詳細を記入してください。",
-                :class => "form-control", :id => "exampleTextarea", :rows => "10" %>
+              <h3><%= form.label :content, '募集内容' %><br></h3>
+              <%= form.text_field :content, class: "form_text" %>
             </div>
             <br>
             <div class="form-group">
-              <%= form.label :tag_ids, 'タグ' %>
+              <h3><%= form.label :tag_ids, 'タグ' %></h3>
               <div class="form-check">
                 <label type="form-check-label" value="">
                   <% Tag.all.each do |tag| %>
@@ -100,6 +96,5 @@
             </div>
           </fieldset>
         </form>
-      </div>
-    </div>
+
 <% end %>

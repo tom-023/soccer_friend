@@ -2,33 +2,41 @@
   <%= link_to '以前のメッセージ', '?m=all' %>
 <% end %>
 
-<div class="ui segment">
+<div class="message_parent">
+  <div class="message_item">
   <% @messages.each do |message| %>
     <% if message.body.present? %>
-      <div class="item">
-        <div class="content">
-          <div class="header"><strong><%= message.user.name %></strong> <%= message.message_time %></div>
-          <div class="list">
-            <div class="item">
-              <i class="right triangle icon"></i>
-              <%= message.body %> /
-              <% if message.user == current_user %>
-                <%= message.read ? '既読' : '未読' %>
-              <% end %>
-            </div>
-          </div>
+    <div class="item clearfix">
+      <% if message.user.name == current_user.name %>
+      <div class="my_message">
+        <div class="mycomment">
+          <p><%= message.body %></p>
+        </div>
+        <div class="message_read">
+          <% if message.user == current_user %>
+            <%= message.read ? '既読' : '未読' %>
+          <% end %>
         </div>
       </div>
+      <% else %>
+        <div class="says">
+          <p><%= message.body %></p>
+        </div>
+        <div class="message_name_left">
+          <strong><%= message.user.name %></strong>
+        </div>
+      <% end %>
+    </div>
     <% end %>
   <% end %>
+  </div>
 </div>
 
-<%= form_with(model: [@conversation, @message]) do |f| %>
+
+<%= form_with(model: [@conversation, @message]) do |form| %>
   <div class="field">
-    <%= f.text_area :body, class: "form-control" %>
+    <%= form.text_area :body, class: "message_text" %>
   </div>
-    <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
-  <div>
-    <%= f.submit "メッセージを送る" %>
-  </div>
+    <%= form.text_field :user_id, value: current_user.id, type: "hidden"  %>
+    <%= form.submit "メッセージを送る", class: "message_btn" %>
 <% end %>

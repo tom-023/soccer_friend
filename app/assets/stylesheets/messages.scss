@@ -1,3 +1,107 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.message_text {
+  border: solid 0.1em #000080;
+  width: 20em;
+  height: 5em;
+}
+
+.message_btn {
+    display: inline-block;
+    padding: 0.5em 1em;
+    margin-top: 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+  }
+
+.message_btn:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+    border-bottom: none;
+}
+
+
+.message_parent {
+  padding: 20px;
+}
+
+.message_item {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #f8f8ff	;
+  border: solid 2px #333333;
+}
+
+.item {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.says {
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.says p {
+  margin: 0;
+  padding: 0;
+}
+
+
+.my_message {
+  float: right;
+  clear: both;
+}
+
+.mycomment {
+  display: inline-block;
+  position: relative;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #30e852;
+}
+
+.mycomment:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+
+.mycomment p {
+  margin: 0;
+  padding: 0;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}

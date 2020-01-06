@@ -3,7 +3,22 @@ class EventsController < ApplicationController
   # before_action :ensure_correct_user, only: [:edit, :update, :destroy]  
 
   def index
-    @events = Event.all.page(params[:page]).per(6)
+    @events = Event.all
+    if params[:syosinsya].present?
+      @events = @events.joins(:tags).where(tags: { id: 1 }) #初心者タグのイベント
+      @events = @events.page(params[:page]).per(3)
+    elsif params[:small_group].present?
+      @events = @events.joins(:tags).where(tags: { id: 2 }) #少人数タグのイベント
+      @events = @events.page(params[:page]).per(3)
+    elsif params[:woman_supporter].present?
+      @events = @events.joins(:tags).where(tags: { id: 3 }) #女性限定タグのイベント
+      @events = @events.page(params[:page]).per(3)
+    elsif params[:cheering_team]
+      @events = @events.where('cheering_team LIKE ?', "%#{params[:cheering_team]}%")
+      @events = @events.page(params[:page]).per(3)
+    else
+      @events = @events.page(params[:page]).per(6)
+    end
   end
 
   def new

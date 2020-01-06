@@ -1,6 +1,6 @@
-<h1><%= t('view.details') %></h1>
+<h1 class="title"><%= t('view.details') %></h1>
 
-
+<div class="details">
 <div class="card border-dark mb-3" style="max-width: 30rem;">
   <div class="card-header">
     <h2><%= @event.title %></h2>
@@ -20,10 +20,13 @@
     <h3>募集内容</h3>
     <p class="card-text"><%= @event.content %></p>
     <br>
-    <% @event.tags.each do |tag| %>
-      <%= tag.title %>
-    <% end %>
+    <div class="tag">
+      <% @event.tags.each do |tag| %>
+        <%= tag.title %>
+      <% end %>
+    </div>
     <br>
+    <div class="join">
     <% unless @event.organizer_id == current_user.id %>
       <% if @participant_management.present? %>
         <%= link_to 'イベントをキャンセルする', participant_management_path(id: @participant_management.id), method: :delete, class: 'btn btn-danger' %>
@@ -31,19 +34,27 @@
         <%= link_to 'イベントに参加する', participant_managements_path(event_id: @event.id), method: :post, class: 'btn btn-primary' %>
       <% end %>
     <% end %>
+    </div>
+    <br>
+      <input type="button" onclick="history.back()" value="戻る" class="btn btn-outline-secondary">
   </div>
 </div>
 
-<p><%= '参加者一覧' %></p>
-<% @event_participant_users.each do |event_participant_user| %>
-  <ul>
-    <li>
-      <%= event_participant_user.name %>
-      <% if event_participant_user.id != current_user.id %>
-        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: event_participant_user.id), method: :post %>
-      <% end %>
-    </li>
-  </ul>
-<% end %>
+  <h3 class="title"><%= '参加者一覧' %></h3>
 
-<input type="button" onclick="history.back()" value="戻る" class="btn btn-outline-secondary">
+  <div class="participants">
+    <% @event_participant_users.each do |event_participant_user| %>
+    <ul>
+      <li>
+        <%= event_participant_user.name %> さん
+        <% if event_participant_user.id != current_user.id %>
+          <span class="message">
+            <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: event_participant_user.id), method: :post, style: "color:#000080;" %>
+          </span>
+        <% end %>
+      </li>
+    </ul>
+    <% end %>
+  </div>
+
+</div>

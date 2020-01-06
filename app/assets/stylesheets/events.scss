@@ -36,3 +36,67 @@
   padding: 40px 80px;
   background-color: #fff
 }
+
+.title {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.event_form{
+  width:700px;
+  margin:50px auto;
+  padding: 50px;
+  border: medium double #c0c0c0;
+}
+
+.details {
+  width: 700px;
+  margin: 50px auto;
+}
+
+.card {
+  margin:50px auto;
+}
+
+
+.form_group {
+  margin-bottom: 20px;
+}
+
+.form_text {
+        width: 570px;
+        height:200px;
+}
+
+.tag {
+  background-color: #808000;
+  display: inline-block;
+  padding: 5px 10px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.join {
+  text-align:center;
+}
+
+.participants {
+  width: 500px;
+  margin:50px auto;
+}
+
+.participants ul {
+  background: #fffcf4;
+  border-radius :8px;
+  box-shadow :0px 0px 5px silver;
+  padding: 0.5em 0.5em 0.5em 2em;
+}
+.participants ul li {
+  line-height: 1.5;
+  padding: 0.5em 0;
+}
+
+.message {
+  padding: 5px 10px;
+  margin-left: 10px;
+}

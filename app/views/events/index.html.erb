@@ -28,11 +28,13 @@
     <div class="row">
       <div class="col-lg-4">
         <div class="card">
-          <%= image_tag 'beginner.jpg', :width => '100%', :height => '100%' %>
+          <%= image_tag 'syosinsya.jpg', :width => '100%', :height => '100%' %>
           <div class="card-body">
             <h4 class="card-title">初心者歓迎</h4>
-            <p class="card-text">サッカーは詳しくないけどスタジアム観戦に興味ある人向けの募集です。</p>
-            <a href="#" class="btn btn-primary">詳細を見る</a>
+            <p class="card-text">サッカー初心者だけどスタジアム観戦に興味ある人向けの募集です。</p>
+            <form action="/" method="get">
+              <input type="submit" name="syosinsya" class="btn btn-primary" value="詳細を見る">
+            </form>
           </div>
         </div>
       </div>
@@ -42,7 +44,9 @@
           <div class="card-body">
             <h4 class="card-title">女性限定</h4>
             <p class="card-text">サッカー女子仲間を作りたい人向けの募集です。</p>
-            <a href="#" class="btn btn-primary">詳細を見る</a>
+            <form action="/" method="get">
+              <input type="submit" name="woman_supporter" class="btn btn-primary" value="詳細を見る">
+            </form>
           </div>
         </div>
       </div>
@@ -52,7 +56,9 @@
           <div class="card-body">
             <h4 class="card-title">少人数</h4>
             <p class="card-text">サッカー仲間を作りたいけど大勢は苦手な人向けの募集です。</p>
-            <a href="#" class="btn btn-primary">詳細を見る</a>
+            <form action="/" method="get">
+              <input type="submit" name="small_group" class="btn btn-primary" value="詳細を見る">
+            </form>
           </div>
         </div>
       </div>
@@ -61,24 +67,36 @@
 
 
 <div id="contents">
-
+      <h2>新着記事</h2>
 <%= form_with(method: :get, url: events_path, local: true) do |f| %>
   <%= f.label :support_team, t('view.support_team') %>
-  <%= f.text_field :support_team %>
-
-  <%= f.label :tag, t('view.tag') %>
-  <%= f.select :tag_id, Tag.pluck(:title, :id), { include_blank: true } %>
-
+  <%= f.select :cheering_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
+                                  "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
+                                  "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
+                                  "鹿島アントラーズ","浦和レッズ","大宮アルディージャ",
+                                  "ジェフユナイテッド千葉","柏レイソル","FC東京",
+                                  "東京ヴェルディ","FC町田ゼルビア","川崎フロンターレ",
+                                  "横浜F・マリノス","横浜FC","Y.S.C.C.横浜",
+                                  "湘南ベルマーレ","SC相模原","ザスパクサツ群馬",
+                                  "ヴァンフォーレ甲府","松本山雅FC","AC長野パルセイロ",
+                                  "カターレ富山","アルビレックス新潟","ツエーゲン金沢",
+                                  "FC岐阜","清水エスパルス","ジュビロ磐田","藤枝MYFC",
+                                  "アスルクラロ沼津","名古屋グランパス","京都サンガF.C.",
+                                  "ガンバ大阪","セレッソ大阪","ヴィッセル神戸",
+                                  "ファジアーノ岡山","ガイナーレ鳥取","サンフレッチェ広島",
+                                  "レノファ山口FC","カマタマーレ讃岐","徳島ヴォルティス",
+                                  "愛媛FC","アビスパ福岡","ギラヴァンツ北九州",
+                                  "サガン鳥栖","V・ファーレン長崎","大分トリニータ",
+                                  "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {prompt: '選択してください'},
+                                  {class: 'form-control'} %>
   <%= f.submit '検索' %>
 <% end %>
-
-<span class="label label-default"><%#= link_to t('view.day_sort'), events_path(sort_expired: "true") %></span>
 
 </div>
 
 
     <div class="container">
-      <h2>新着記事</h2>
+
       <div class="row">
 
   <% @events.each do |event| %>
