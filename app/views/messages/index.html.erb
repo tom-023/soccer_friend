@@ -33,7 +33,7 @@
 </div>
 
 
-<%= form_with(model: [@conversation, @message]) do |form| %>
+<%= form_with(model: [@conversation, @message], class: "message_form") do |form| %>
   <div class="field">
     <%= form.text_area :body, class: "message_text" %>
   </div>

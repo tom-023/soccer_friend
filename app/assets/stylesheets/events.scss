@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.top {
+  color: #fff;
+  font-size: 5em;
+}
+
+.event_img {
+  background-image: url("background-img.jpg");
+}
+
 .header_img {
   position: relative;
   }
@@ -15,7 +24,7 @@
   transform: translate(-50%,-50%);
   /*以下装飾*/
   margin:0;/*余計な隙間を除く*/
-  font-size: 100px;/*文字サイズ*/
+  font-size: 5em;/*文字サイズ*/
   border: solid white 5px; /*線で囲う*/
   padding: 20px;/*文字と線の間の余白*/
   color: white;/*文字色*/
@@ -32,9 +41,8 @@
   }
 
 #contents {
-  margin: 40px auto;
+  margin: 0 auto;
   padding: 0 80px;
-  background-color: #fff
 }
 
 .search {
@@ -55,7 +63,7 @@
 
 .event_form{
   width:700px;
-  margin:50px auto;
+  margin: 50px auto;
   padding: 50px;
   border: medium double #c0c0c0;
 }
@@ -93,7 +101,7 @@
 
 .participants {
   width: 500px;
-  margin:50px auto;
+  margin: 50px auto;
 }
 
 .participants ul {
@@ -110,4 +118,79 @@
 .message {
   padding: 5px 10px;
   margin-left: 10px;
+}
+
+.ranking_all {
+  // margin-bottom: 100px;
+}
+
+.ranking {
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+.order {
+  border-bottom: solid black 2px;
+  padding: 10px;
+  background: #cde2e8;
+}
+
+.icon_size {
+  font-size: 3em
+}
+
+.ranking_font {
+  font-size: 3em;
+  font-family: "Ravi Prakash", cursive;
+}
+
+.ranking_content {
+  background-color: #fff;
+}
+
+.title_content {
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+.title_content p{
+  display: inline-block;
+  border-bottom: solid black 1px;
+}
+
+.cheering_content {
+  // padding-top: 10px;
+  padding-left: 20px;
+}
+
+.cheering_content p{
+  display: inline-block;
+  border-bottom: solid black 1px;
+}
+
+.place_content {
+  padding-left: 20px;
+}
+
+.place_content p{
+  display: inline-block;
+  border-bottom: solid black 1px;
+}
+
+.day_content {
+  padding-left: 20px;
+}
+
+.day_content p{
+  display: inline-block;
+  border-bottom: solid black 1px;
+}
+
+.ranking_btn {
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+.space {
+  padding-left: 20px
 }

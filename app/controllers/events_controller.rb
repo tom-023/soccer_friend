@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @all_ranks = Event.find(ParticipantManagement.group(:event_id).order('count(event_id) desc').limit(3).pluck(:event_id))
     if params[:syosinsya].present?
       @events = @events.joins(:tags).where(tags: { id: 1 }) #初心者タグのイベント
       @events = @events.page(params[:page]).per(3)

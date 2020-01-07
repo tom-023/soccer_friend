@@ -1,13 +1,13 @@
-<div class="header_img">
-  <%= image_tag 'stadium.jpg',:width => '100%', :height => '500' %>
-  <a href="http://localhost:3000/events/new"><i class="far fa-futbol" ></i> Enjoy Soccer</a>
-</div>
+<div class="event_img">
+  <div class="header_img">
+    <%= image_tag 'stadium.jpg',:width => '100%', :height => '500' %>
+    <a href="http://localhost:3000/events/new"><i class="far fa-futbol" ></i> Enjoy Soccer</a>
+  </div>
 
   <div class="row">
     <div class="col-md-12">
-      <div class="page-header">
-        <!-- <h1 id="containers">Containers</h1> -->
-      </div>
+      <!-- <div class="page-header">
+      </div> -->
       <div class="bs-component">
         <div class="jumbotron">
           <h1 class="display-3">サカトモの輪</h1>
@@ -67,7 +67,7 @@
 
 
 <div id="contents">
-  <h2>募集一覧</h2>
+  <h2 class="top">募集一覧</h2>
   <div class="search">
   <%= form_with(method: :get, url: events_path, local: true) do |f| %>
     <%= f.select :cheering_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
@@ -90,7 +90,7 @@
                                   "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {prompt: '選択してください'},
                                   {class: 'form-control'} %>
     <div class="search_btn">
-      <button type="submit" class="btn btn-outline-primary">チーム名で検索</button>
+      <button type="submit" class="btn btn-primary">チーム名で検索</button>
     </div>
   <% end %>
   </div>
@@ -98,34 +98,62 @@
 
   <div class="container">
     <div class="row">
+      <% @events.each do |event| %>
+        <div class="col-lg-4">
+          <div class="card" style="width: 20rem;">
+            <div class="card-img-top">
+              <% if event.organizer.icon? %>
+                <%#= image_tag @user.icon.url %>
+              <% else %>
+                <%= image_tag 'soccer_ball.jpg', :width => '100%', :height => '100%' %>
+              <% end %>
+            </div>
+              <div class="card-body">
+                <h5 class="card-title"><%= event.title %></h5>
+                  <p class="card-text"><%= event.content %></p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><%= event.cheering_team %></li>
+                <li class="list-group-item"><%= event.place %></li>
+                <li class="list-group-item"><%= event.day.strftime('%Y/%m/%d') %></li>
+              </ul>
+              <div class="card-body">
+                <div class="card-link"><%= link_to '詳細', event_path(event.id), class: "btn btn-primary" %></div>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <br>
+    <%= paginate @events %>
+  </div>
 
-  <% @events.each do |event| %>
-  <div class="col-lg-4">
-  <div class="card" style="width: 20rem;">
-  <div class="card-img-top">
-    <% if event.organizer.icon? %>
-      <%#= image_tag @user.icon.url %>
-    <% else %>
-      <%= image_tag 'soccer_ball.jpg', :width => '100%', :height => '100%' %>
+    <div class="ranking_all">
+  <h2 class="top">人気募集ランキング</h2>
+    <% @all_ranks.each.with_index(1) do |event, i| %>
+      <div class="ranking">
+        <div class="order">
+          <span class="icon_size"><i class="far fa-futbol"></i></span><span class="ranking_font"><%= "第#{i}位" %></span>
+        </div>
+        <div class="ranking_content">
+          <div class="title_content">
+            <p>【タイトル】<span class="space"><%= event.title %></span></p>
+          </div>
+          <div class="cheering_content">
+            <p>【応援チーム】<span class="space"><%= event.cheering_team %></span></p>
+          </div>
+          <div class="place_content">
+            <p>【スタジアム】<span class="space"><%= event.place %></span></p>
+          </div>
+          <div class="day_content">
+            <p>【キックオフ】<span class="space"><%= event.day %></span></p>
+          </div>
+          <div class="ranking_btn">
+            <div class="card-link"><%= link_to '詳細', event_path(event.id), class: "btn btn-primary" %></div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title"><%= event.title %></h5>
-    <p class="card-text"><%= event.content %></p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><%= event.cheering_team %></li>
-    <li class="list-group-item"><%= event.place %></li>
-    <li class="list-group-item"><%= event.day.strftime('%Y/%m/%d') %></li>
-  </ul>
-  <div class="card-body">
-    <div class="card-link"><%= link_to '詳細', event_path(event.id) %></div>
-  </div>
-  </div>
-  </div>
-  <% end %>
-</div>
-<br>
-<%= paginate @events %>
+    </div>
 </div>
 </div>
