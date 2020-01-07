@@ -128,32 +128,29 @@
     <%= paginate @events %>
   </div>
 
-    <div class="ranking_all">
-  <h2 class="top">人気募集ランキング</h2>
-    <% @all_ranks.each.with_index(1) do |event, i| %>
-      <div class="ranking">
-        <div class="order">
-          <span class="icon_size"><i class="far fa-futbol"></i></span><span class="ranking_font"><%= "第#{i}位" %></span>
-        </div>
-        <div class="ranking_content">
-          <div class="title_content">
-            <p>【タイトル】<span class="space"><%= event.title %></span></p>
+      <h2 class="top">人気募集ランキング</h2>
+        <% @all_ranks.each.with_index(1) do |event, i| %>
+          <div class="ranking">
+              <div class="order">
+                <span class="icon_size"><i class="far fa-futbol"></i></span><span class="ranking_font"><%= "第#{i}位" %></span>
+              </div>
+              <div class="ranking_content">
+                <div class="title_content">
+                  <p>【タイトル】<span class="space"><%= event.title %></span></p>
+                </div>
+                <div class="cheering_content">
+                  <p>【応援チーム】<span class="space"><%= event.cheering_team %></span></p>
+                </div>
+                <div class="place_content">
+                  <p>【スタジアム】<span class="space"><%= event.place %></span></p>
+                </div>
+                <div class="day_content">
+                  <p>【キックオフ】<span class="space"><%= event.day %></span></p>
+                </div>
+                <div class="ranking_btn">
+                  <div class="card-link"><%= link_to '詳細', event_path(event.id), class: "btn btn-primary" %></div>
+                </div>
+              </div>
           </div>
-          <div class="cheering_content">
-            <p>【応援チーム】<span class="space"><%= event.cheering_team %></span></p>
-          </div>
-          <div class="place_content">
-            <p>【スタジアム】<span class="space"><%= event.place %></span></p>
-          </div>
-          <div class="day_content">
-            <p>【キックオフ】<span class="space"><%= event.day %></span></p>
-          </div>
-          <div class="ranking_btn">
-            <div class="card-link"><%= link_to '詳細', event_path(event.id), class: "btn btn-primary" %></div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    </div>
-</div>
+        <% end %>
 </div>

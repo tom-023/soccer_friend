@@ -2,14 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.profile_header {
-  margin: 20px 20px 20px 30px
+.content {
+  margin: 0 auto;
 }
 
 .profile-container {
   display:flex;
   flex-direction: row;
-  margin: 20px
+  margin: 0 auto;
 }
 
 .profile-content-wrapper {
@@ -29,4 +29,44 @@
 h2 {
   text-align: center;
   margin-top: 40px;
+}
+
+.profile_support_team {
+  display: inline-block;
+  background-color: red;
+  margin-bottom: 10px;
+}
+
+.profile_support_team span{
+  padding: 10px;
+  color: #fff;
+}
+
+.profile_support_history {
+  display: inline-block;
+  background-color: blue;
+  margin-bottom: 10px;
+}
+
+.profile_support_history span{
+  padding: 10px;
+  color: #fff;
+}
+
+.profile_introduce {
+  display: inline-block;
+  background-color: gray;
+  margin-bottom: 10px;
+}
+
+.profile_introduce span{
+  padding: 10px;
+  color: #fff;
+}
+
+.user_form {
+  width: 700px;
+  margin: 50px auto;
+  padding: 50px;
+  border: medium double #c0c0c0;
 }

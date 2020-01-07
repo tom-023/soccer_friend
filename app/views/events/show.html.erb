@@ -20,11 +20,13 @@
     <h3>募集内容</h3>
     <p class="card-text"><%= @event.content %></p>
     <br>
-    <div class="tag">
-      <% @event.tags.each do |tag| %>
-        <%= tag.title %>
+      <% if @event.tags.present? %>
+        <div class="tag">
+          <% @event.tags.each do |tag| %>
+            <%= tag.title %>
+          <% end %>
+        </div>
       <% end %>
-    </div>
     <br>
     <div class="join">
     <% unless @event.organizer_id == current_user.id %>

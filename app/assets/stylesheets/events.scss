@@ -61,13 +61,6 @@
   margin: 50px 0;
 }
 
-.event_form{
-  width:700px;
-  margin: 50px auto;
-  padding: 50px;
-  border: medium double #c0c0c0;
-}
-
 .details {
   width: 700px;
   margin: 50px auto;
@@ -118,10 +111,6 @@
 .message {
   padding: 5px 10px;
   margin-left: 10px;
-}
-
-.ranking_all {
-  // margin-bottom: 100px;
 }
 
 .ranking {
@@ -193,4 +182,11 @@
 
 .space {
   padding-left: 20px
+}
+
+.event_form {
+  width: 700px;
+  margin: 50px auto;
+  padding: 50px;
+  border: medium double #c0c0c0;
 }
