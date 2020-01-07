@@ -86,6 +86,7 @@
   padding: 5px 10px;
   color: white;
   margin-bottom: 30px;
+  margin-right: 10px;
 }
 
 .join {
@@ -103,14 +104,29 @@
   box-shadow :0px 0px 5px silver;
   padding: 0.5em 0.5em 0.5em 2em;
 }
+
 .participants ul li {
   line-height: 1.5;
   padding: 0.5em 0;
+  list-style-type: none
+}
+
+.organizer {
+  width: 500px;
+  margin: 50px auto;
+  background: #f5f5dc;
+  border-radius :8px;
+  box-shadow :0px 0px 5px silver;
+}
+
+.organizer p {
+  display: inline-block;
+  padding: 1.2em 0.5em 0.5em 2em;
 }
 
 .message {
   padding: 5px 10px;
-  margin-left: 10px;
+  margin: 0 10px;
 }
 
 .ranking {
@@ -142,7 +158,7 @@
   padding-left: 20px;
 }
 
-.title_content p{
+.title_content p {
   display: inline-block;
   border-bottom: solid black 1px;
 }
@@ -152,7 +168,7 @@
   padding-left: 20px;
 }
 
-.cheering_content p{
+.cheering_content p {
   display: inline-block;
   border-bottom: solid black 1px;
 }
@@ -161,7 +177,7 @@
   padding-left: 20px;
 }
 
-.place_content p{
+.place_content p {
   display: inline-block;
   border-bottom: solid black 1px;
 }
@@ -170,7 +186,7 @@
   padding-left: 20px;
 }
 
-.day_content p{
+.day_content p {
   display: inline-block;
   border-bottom: solid black 1px;
 }
@@ -188,5 +204,12 @@
   width: 700px;
   margin: 50px auto;
   padding: 50px;
+  border: medium double #c0c0c0;
+}
+
+.confirm_form {
+  width: 700px;
+  margin: 50px auto;
+  padding: 0 30px 40px 30px;
   border: medium double #c0c0c0;
 }

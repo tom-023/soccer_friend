@@ -1,3 +1,4 @@
+<div class="confirm_form">
 <%= form_with(model: @event, url: events_path, local: true) do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :day %>
@@ -9,7 +10,6 @@
     <%= hidden_field_tag "event[tag_ids][]", id %>
   <% end %>
 
-<div class="container">
   <div class="card border-dark mb-3" style="max-width: 40rem;">
     <div class="card-header"><h2><%= @event.title %></h2></div>
     <div class="card-body">
@@ -26,7 +26,9 @@
       <p class="card-text"><%= @event.content %></p>
       <br>
       <% @event.tags.each do |tag| %>
-        <%= tag.title %>
+        <div class="tag">
+          <%= tag.title %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -43,6 +45,5 @@
       <button type="submit" class="btn btn-outline-primary btn-block">新規登録</button>
     </div>
 </div>
-
-</div>
 <% end %>
+</div>
