@@ -13,7 +13,12 @@
     <p><%= @user.support_history %>年</p>
 
     <div class="profile_introduce"><span>自己紹介</span></div>
-    <p><%= @user.introduce %></p>
-    <%= link_to '編集', edit_user_registration_path(@user.id), class: 'btn btn-success' %>
+      <p><%= @user.introduce %></p>
+    <% if @user.id ==  current_user.id %>
+      <%= link_to '編集', edit_user_registration_path(@user.id), class: 'btn btn-success' %>
+    <% end %>
+    <% unless @user.id ==  current_user.id %>
+      <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: 'btn btn-success' %>
+    <% end %>
   </div>
 </div>
