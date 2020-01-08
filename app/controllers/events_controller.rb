@@ -7,19 +7,14 @@ class EventsController < ApplicationController
     @all_ranks = Event.find(ParticipantManagement.group(:event_id).order('count(event_id) desc').limit(3).pluck(:event_id))
     if params[:syosinsya].present?
       @events = @events.joins(:tags).where(tags: { id: 1 }) #初心者タグのイベント
-      @events = @events.page(params[:page]).per(3)
     elsif params[:small_group].present?
       @events = @events.joins(:tags).where(tags: { id: 2 }) #少人数タグのイベント
-      @events = @events.page(params[:page]).per(3)
     elsif params[:woman_supporter].present?
       @events = @events.joins(:tags).where(tags: { id: 3 }) #女性限定タグのイベント
-      @events = @events.page(params[:page]).per(3)
     elsif params[:cheering_team]
       @events = @events.where('cheering_team LIKE ?', "%#{params[:cheering_team]}%")
-      @events = @events.page(params[:page]).per(3)
-    else
-      @events = @events.page(params[:page]).per(6)
     end
+    @events = @events.page(params[:page]).per(4).order(created_at: :desc)
   end
 
   def new

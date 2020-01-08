@@ -13,7 +13,7 @@
 
 .header_img {
   position: relative;
-  }
+}
 
 .header_img a {/*aタグを画像の真ん中に*/
   position: absolute;
@@ -67,7 +67,18 @@
 }
 
 .card {
-  margin:50px auto;
+  margin: 50px auto;
+}
+
+.card-title {
+  margin-top: 10px;
+  font-family: "Ravi Prakash", cursive;
+}
+
+.event-index {
+  background-color: #95ed3a;
+  border-bottom: double 2px #3a4c09;
+  color: #353535;
 }
 
 
@@ -76,8 +87,8 @@
 }
 
 .form_text {
-        width: 570px;
-        height:200px;
+  width: 570px;
+  height:200px;
 }
 
 .tag {

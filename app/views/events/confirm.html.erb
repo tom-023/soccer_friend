@@ -13,14 +13,14 @@
   <div class="card border-dark mb-3" style="max-width: 40rem;">
     <div class="card-header"><h2><%= @event.title %></h2></div>
     <div class="card-body">
+      <h3>応援チーム</h3>
+      <p class="card-text"><%= @event.cheering_team %></p>
+      <br>
       <h3>キックオフ</h3>
       <p class="card-text"><%= @event.day.strftime("%Y-%m-%d %H:%M") %></p>
       <br>
       <h3>スタジアム</h3>
       <p class="card-text"><%= @event.place %></p>
-      <br>
-      <h3>応援チーム</h3>
-      <p class="card-text"><%= @event.cheering_team %></p>
       <br>
       <h3>募集内容</h3>
       <p class="card-text"><%= @event.content %></p>
