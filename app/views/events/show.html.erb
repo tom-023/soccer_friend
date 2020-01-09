@@ -1,4 +1,4 @@
-<h2 class="title"><%= t('view.イベント詳細') %></h2>
+<h2 class="title"><i class="far fa-futbol" ></i> <%= t('view.イベント詳細') %></h2>
   <div class="details">
     <div class="card border-dark mb-3" style="max-width: 30rem;">
       <div class="card-header">
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-  <h3 class="title"><%= '参加者一覧' %></h3>
+  <h3 class="h3-title"><%= '参加者一覧' %></h3>
     <div class="participants">
       <% @event_participant_users.each do |event_participant_user| %>
         <ul>
@@ -60,7 +60,7 @@
       <% end %>
     </div>
 
-  <h3 class="title"><%= 'イベント主催者' %></h3>
+  <h3 class="h3-title"><%= 'イベント主催者' %></h3>
     <div class="organizer">
       <p><%= @event.organizer.name %> さん</p>
       <% unless @event.organizer_id == current_user.id %>

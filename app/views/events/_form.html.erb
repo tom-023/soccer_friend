@@ -22,7 +22,7 @@
               <h3><%= form.label :day, 'キックオフ' %></h3>
             <div class="form-inline">
               <%= raw sprintf(
-                form.datetime_select(
+                form.date_select(
                   :day,
                   {
                     start_year: Time.zone.now.year,# 選択可能な開始年
@@ -30,18 +30,18 @@
                     use_two_digit_numbers: true,# 月日を2桁の値で表示
                     date_separator: '%s',# 年, 月
                     datetime_separator: '%s',# 日
-                    time_separator: '%s'# 時
+                    # time_separator: '%s'# 時
                   },# オプション
                   { class: 'form-control' }# htmlオプションを指定する場合は別で指定
                 ),
-                '年 ', '月 ', '日 ', '時 ') + '分'# 分 は最後につけ加えられる
+                '年 ', '月 ') + '日'# 日 は最後につけ加えられる
               %>
             </div>
             </div>
             <br>
             <div class="form-group">
               <h3><%= form.label :place, 'スタジアム' %></h3>
-              <%= form.text_field :place, :class => 'form-control' %>
+              <%= form.text_field :place, class: 'form-control' %>
             </div>
             <br>
             <div class="form-group">
@@ -69,7 +69,7 @@
             <br>
             <div class="form-group">
               <h3><%= form.label :content, '募集内容' %><br></h3>
-              <%= form.text_field :content, class: "form_text" %>
+              <%= form.text_area :content, class: "form_text" %>
             </div>
             <br>
             <div class="form-group">

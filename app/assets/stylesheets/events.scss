@@ -4,11 +4,7 @@
 
 .top {
   color: #fff;
-  font-size: 5em;
-}
-
-.event_img {
-  background-image: url("background-img.jpg");
+  font-size: 5vw;
 }
 
 .header_img {
@@ -24,7 +20,7 @@
   transform: translate(-50%,-50%);
   /*以下装飾*/
   margin:0;/*余計な隙間を除く*/
-  font-size: 5em;/*文字サイズ*/
+  font-size: 5vw;/*文字サイズ*/
   border: solid white 5px; /*線で囲う*/
   padding: 20px;/*文字と線の間の余白*/
   color: white;/*文字色*/
@@ -57,13 +53,21 @@
 }
 
 .title {
+  font-size: 3em;
+  text-align: center;
+  margin-top: 50px;
+  color: #fff;
+}
+
+.h3-title {
   text-align: center;
   margin: 50px 0;
+  color: #fff;
 }
 
 .details {
-  width: 700px;
-  margin: 50px auto;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .card {
@@ -76,7 +80,7 @@
 }
 
 .event-index {
-  background-color: #95ed3a;
+  background-color: #c0ffb3;
   border-bottom: double 2px #3a4c09;
   color: #353535;
 }
@@ -87,8 +91,8 @@
 }
 
 .form_text {
-  width: 570px;
-  height:200px;
+  width: 100%;
+  height: 200px;
 }
 
 .tag {
@@ -105,7 +109,7 @@
 }
 
 .participants {
-  width: 500px;
+  width: 100%;
   margin: 50px auto;
 }
 
@@ -216,15 +220,18 @@
 }
 
 .event_form {
-  width: 700px;
+  max-width: 700px;
   margin: 50px auto;
   padding: 50px;
   border: medium double #c0c0c0;
+  background-color: #f1f2ef;
 }
 
 .confirm_form {
-  width: 700px;
+  min-width: 500px;
+  max-width: 700px;
   margin: 50px auto;
   padding: 0 30px 40px 30px;
   border: medium double #c0c0c0;
+  background-color: #fff;
 }
