@@ -1,4 +1,4 @@
-<h2 class="top">プロフィール</h2>
+<h2 class="top"><%= t('views.messages.profile') %></h2>
 <div class="card" style="width: 20rem;">
   <% if @user.icon? %>
     <%= image_tag @user.icon.thumb.url, class: "card-img-top" %>
@@ -7,18 +7,18 @@
   <% end %>
   <div class="card-body">
     <h3 class="card-title"><%= @user.name %></h3>
-    <div class="profile_support_team"><span>応援チーム</span></div>
+    <div class="profile_support_team"><span><%= t('views.messages.cheering_team') %></span></div>
     <p><%= @user.support_team %></p>
-    <div class="profile_support_history"><span>サポーター歴</span></div>
+    <div class="profile_support_history"><span><%= t('views.messages.support_history') %></span></div>
     <p><%= @user.support_history %>年</p>
 
-    <div class="profile_introduce"><span>自己紹介</span></div>
+    <div class="profile_introduce"><span><%= t('views.messages.introduce') %></span></div>
       <p><%= @user.introduce %></p>
     <% if @user.id ==  current_user.id %>
-      <%= link_to '編集', edit_user_registration_path(@user.id), class: 'btn btn-success' %>
+      <%= link_to t('views.messages.edit'), edit_user_registration_path(@user.id), class: 'btn btn-success' %>
     <% end %>
     <% unless @user.id ==  current_user.id %>
-      <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: 'btn btn-success' %>
+      <%= link_to t('views.messages.send_message'), conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: 'btn btn-success' %>
     <% end %>
   </div>
 </div>
