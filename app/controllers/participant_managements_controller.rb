@@ -9,8 +9,12 @@ class ParticipantManagementsController < ApplicationController
   end
 
   def destroy
+    @participant_management = ParticipantManagement.find(params[:id])
+    @event = @participant_management.event
+    @user = @event.organizer
     participant_management = current_user.participant_managements.find_by(id: params[:id]).destroy
     redirect_to events_url, notice: "#{participant_management.event.organizer.name}さんのイベントをキャンセルしました"
+    CancelMailer.cancel_mail(@user, @event).deliver
   end
 
 end
