@@ -1,5 +1,5 @@
 <% if @over_ten %>
-  <%= link_to '以前のメッセージ', '?m=all' %>
+  <%= link_to t('views.messages.previous_message'), '?m=all' %>
 <% end %>
 
 <div class="message_parent">
@@ -36,6 +36,6 @@
       <%= form.text_area :body, class: "message_text" %>
     </div>
     <%= form.text_field :user_id, value: current_user.id, type: "hidden"  %>
-    <%= form.submit "メッセージを送る", class: "message_btn" %>
+    <%= form.submit t('views.messages.send_message'), class: "message_btn" %>
   <% end %>
 </div>

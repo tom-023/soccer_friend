@@ -1,24 +1,24 @@
-<h2 class="title"><i class="far fa-futbol" ></i> <%= t('view.イベント詳細') %></h2>
+<h2 class="title"><i class="far fa-futbol" ></i> <%= t('views.messages.event_details') %></h2>
   <div class="details">
     <div class="card border-dark mb-3" style="max-width: 30rem;">
       <div class="card-header">
         <h2><%= @event.title %></h2>
           <% if @event.organizer_id == current_user.id %>
-            <%= link_to '編集', edit_event_path, class: 'btn btn-success' %>
-            <%= link_to '削除', @event, method: :delete, data: { confirm: '削除してよろしいですか？' }, class: 'btn btn-danger' %>
+            <%= link_to t('views.messages.edit'), edit_event_path, class: 'btn btn-success' %>
+            <%= link_to t('views.messages.delete'), @event, method: :delete, data: { confirm: t('views.messages.really-delete') }, class: 'btn btn-danger' %>
           <% end %>
       </div>
       <div class="card-body">
-        <h3>応援チーム</h3>
+        <h3><%= t('views.messages.support_team') %></h3>
         <p class="card-text"><%= @event.cheering_team %></p>
         <br>
-        <h3>キックオフ</h3>
+        <h3><%= t('views.messages.kickoff') %></h3>
         <p class="card-text"><%= @event.day.strftime("%Y年%m月%d日") %></p>
         <br>
-        <h3>スタジアム</h3>
+        <h3><%= t('views.messages.place') %></h3>
         <p class="card-text"><%= @event.place %></p>
         <br>
-        <h3>募集内容</h3>
+        <h3><%= t('views.messages.content') %></h3>
         <p class="card-text"><%= @event.content %></p>
         <br>
         <% if @event.tags.present? %>
@@ -32,18 +32,18 @@
         <div class="join">
           <% unless @event.organizer_id == current_user.id %>
             <% if @participant_management.present? %>
-              <%= link_to 'イベントをキャンセルする', participant_management_path(id: @participant_management.id), method: :delete, class: 'btn btn-danger' %>
+              <%= link_to t('views.messages.cancel_event'), participant_management_path(id: @participant_management.id), method: :delete, class: 'btn btn-danger' %>
             <% else %>
-              <%= link_to 'イベントに参加する', participant_managements_path(event_id: @event.id), method: :post, class: 'btn btn-primary' %>
+              <%= link_to t('views.messages.jopin_event'), participant_managements_path(event_id: @event.id), method: :post, class: 'btn btn-primary' %>
             <% end %>
           <% end %>
         </div>
         <br>
-        <input type="button" onclick="history.back()" value="戻る" class="btn btn-outline-secondary">
+        <input type="button" onclick="history.back()" value=<%= t('views.messages.back') %> class="btn btn-outline-secondary">
       </div>
     </div>
 
-  <h3 class="h3-title"><%= '参加者一覧' %></h3>
+  <h3 class="h3-title"><%= t('views.messages.participant_index') %></h3>
     <div class="participants">
       <% @event_participant_users.each do |event_participant_user| %>
         <ul>
@@ -51,24 +51,24 @@
             <%= event_participant_user.name %> さん
             <% if event_participant_user.id != current_user.id %>
               <span class="message">
-                <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: event_participant_user.id), method: :post, style: "color:#000080;" %>
+                <%= link_to t('views.messages.send_message'), conversations_path(sender_id: current_user.id, recipient_id: event_participant_user.id), method: :post, style: "color:#000080;" %>
               </span>
-              <span><%= link_to 'プロフィール', user_path(event_participant_user.id), class: 'btn btn-success' %></span>
+              <span><%= link_to t('views.messages.profile'), user_path(event_participant_user.id), class: 'btn btn-success' %></span>
             <% end %>
           </li>
         </ul>
       <% end %>
     </div>
 
-  <h3 class="h3-title"><%= 'イベント主催者' %></h3>
+  <h3 class="h3-title"><%= t('views.messages.organizer') %></h3>
     <div class="organizer">
       <p><%= @event.organizer.name %> さん</p>
       <% unless @event.organizer_id == current_user.id %>
         <span class="message">
-          <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: @event.organizer_id), method: :post, style: "color:#000080;" %>
+          <%= link_to t('views.messages.send_message'), conversations_path(sender_id: current_user.id, recipient_id: @event.organizer_id), method: :post, style: "color:#000080;" %>
         </span>
         <span>
-          <%= link_to 'プロフィール', user_path(@event.organizer_id), class: 'btn btn-success' %>
+          <%= link_to t('views.messages.profile'), user_path(@event.organizer_id), class: 'btn btn-success' %>
         </span>
       <% end %>
     </div>

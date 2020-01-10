@@ -1,6 +1,6 @@
-<h2 class="top">編集</h2>
+<h2 class="top"><%= t('views.messages.edit') %></h2>
 <div class="acount-delete">
-  <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除してよろしいですか?" }, method: :delete, class: 'btn btn-danger delete-btn' %>
+  <%= button_to t('views.messages.acount-delete'), registration_path(resource_name), data: { confirm: t('views.messages.really-delete') }, method: :delete, class: 'btn btn-danger delete-btn' %>
 </div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |form| %>
 <%= render "devise/shared/error_messages", resource: resource %>
@@ -8,19 +8,19 @@
       <form>
         <fieldset>
           <div class="form-group">
-            <h3><%= form.label :name, '名前' %></h3>
-            <%= form.text_field :name, :class => 'form-control' %>
+            <h3><%= form.label :name, t('views.messages.name') %></h3>
+            <%= form.text_field :name, class: 'form-control' %>
           </div>
           <br>
 
           <div class="form-group">
-            <h3><%= form.label :email %></h3>
-            <%= form.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control' %>
+            <h3><%= form.label :email, t('views.messages.email') %></h3>
+            <%= form.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
           </div>
           <br>
 
           <div class="form-group">
-            <h3><%= form.label :support_team, '応援チーム' %></h3>
+            <h3><%= form.label :support_team, t('views.messages.support_team') %></h3>
             <%= form.select :support_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
                                             "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
                                             "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
@@ -38,27 +38,27 @@
                                             "レノファ山口FC","カマタマーレ讃岐","徳島ヴォルティス",
                                             "愛媛FC","アビスパ福岡","ギラヴァンツ北九州",
                                             "サガン鳥栖","V・ファーレン長崎","大分トリニータ",
-                                            "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {:prompt => "選択してください"},
-                                            {:class => 'form-control', :id => 'exampleSelect1'} %>
+                                            "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {prompt: t('views.messages.choice')},
+                                            {class: 'form-control', id: 'exampleSelect1'} %>
           </div>
           <br>
 
           <div class="form-group">
-            <h3><%= form.label :support_history %></h3>
+            <h3><%= form.label :support_history, t('views.messages.support_history') %></h3>
             <div class="form-inline">
-            <%= form.number_field :support_history,min:0,max:100,step:1, :class => 'form-control' %>年
+            <%= form.number_field :support_history,min:0,max:100,step:1, class: 'form-control' %>年
           </div>
           </div>
           <br>
 
           <div class="form-group">
-            <h3><%= form.label :introduce, '自己紹介' %></h3>
-            <%= form.text_field :introduce, class: "form_text" %>
+            <h3><%= form.label :introduce, t('views.messages.introduce') %></h3>
+            <%= form.text_area :introduce, class: "form_text" %>
           </div>
           <br>
 
           <div class="form-group">
-            <h3><%= form.label :icon %></h3>
+            <h3><%= form.label :icon, t('views.messages.icon') %></h3>
             <%= form.file_field :icon %>
           </div>
           <br>
@@ -88,13 +88,13 @@
             <div class="col-1">
             </div>
             <div class="col-5">
-              <input type="button" onclick="history.back()" value="戻る" class="btn btn-outline-secondary btn-block">
+              <input type="button" onclick="history.back()" value=<%= t('views.messages.back') %> class="btn btn-outline-secondary btn-block">
             </div>
             <div class="col-5">
                 <% if @user.new_record? %>
-                  <button type="submit" class="btn btn-outline-primary btn-block">登録する</button>
+                  <button type="submit" class="btn btn-outline-primary btn-block"><%= t('views.messages.register') %></button>
                 <% else %>
-                  <button type="submit" class="btn btn-outline-primary btn-block">編集する</button>
+                  <button type="submit" class="btn btn-outline-primary btn-block"><%= t('views.messages.edit') %></button>
                 <% end %>
             </div>
           </div>

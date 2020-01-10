@@ -2,7 +2,7 @@
   <!--エラーがあった時にメッセージを出力する -->
   <% if @event.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <h2><%= pluralize(@event.errors.count, t('views.messages.errors')) %><%= t('views.messages.check-contents') %></h2>
       <ul>
       <% @event.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -14,12 +14,12 @@
         <form>
           <fieldset>
             <div class="form-group">
-              <h3><%= form.label :title, 'タイトル' %></h3>
-              <%= form.text_field :title, :class => 'form-control' %>
+              <h3><%= form.label :title, t('views.messages.title') %></h3>
+              <%= form.text_field :title, class: 'form-control' %>
             </div>
             <br>
             <div class="form_group">
-              <h3><%= form.label :day, 'キックオフ' %></h3>
+              <h3><%= form.label :day, t('views.messages.kickoff') %></h3>
             <div class="form-inline">
               <%= raw sprintf(
                 form.date_select(
@@ -40,12 +40,12 @@
             </div>
             <br>
             <div class="form-group">
-              <h3><%= form.label :place, 'スタジアム' %></h3>
+              <h3><%= form.label :place, t('views.messages.place') %></h3>
               <%= form.text_field :place, class: 'form-control' %>
             </div>
             <br>
             <div class="form-group">
-              <h3><%= form.label :cheering_team, '応援チーム' %></h3>
+              <h3><%= form.label :cheering_team, t('views.messages.cheering_team') %></h3>
               <%= form.select :cheering_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
                                               "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
                                               "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
@@ -63,17 +63,17 @@
                                               "レノファ山口FC","カマタマーレ讃岐","徳島ヴォルティス",
                                               "愛媛FC","アビスパ福岡","ギラヴァンツ北九州",
                                               "サガン鳥栖","V・ファーレン長崎","大分トリニータ",
-                                              "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {prompt: '選択してください'},
+                                              "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {prompt: t('views.messages.choice')},
                                               {class: 'form-control'} %>
             </div>
             <br>
             <div class="form-group">
-              <h3><%= form.label :content, '募集内容' %><br></h3>
+              <h3><%= form.label :content, t('views.messages.content') %><br></h3>
               <%= form.text_area :content, class: "form_text" %>
             </div>
             <br>
             <div class="form-group">
-              <h3><%= form.label :tag_ids, 'タグ' %></h3>
+              <h3><%= form.label :tag_ids, t('views.messages.tag') %></h3>
               <div class="form-check">
                 <label type="form-check-label" value="">
                   <% Tag.all.each do |tag| %>
@@ -88,13 +88,12 @@
                 <div class="col-1">
                 </div>
                 <div class="col-5">
-                  <input type="button" onclick="history.back()" value="戻る" class="btn btn-outline-secondary btn-block">
+                  <input type="button" onclick="history.back()" value=<%= t('views.messages.back') %> class="btn btn-outline-secondary btn-block">
                 </div>
                 <div class="col-5">
-                  <button type="submit" class="btn btn-outline-primary btn-block">確認画面</button>
+                  <button type="submit" class="btn btn-outline-primary btn-block"><%= t('views.messages.confirmation-screen') %></button>
                 </div>
             </div>
           </fieldset>
         </form>
-
 <% end %>

@@ -13,16 +13,16 @@
   <div class="card border-dark mb-3">
     <div class="card-header"><h2><%= @event.title %></h2></div>
     <div class="card-body">
-      <h3>応援チーム</h3>
+      <h3><%= t('views.messages.cheering_team') %></h3>
       <p class="card-text"><%= @event.cheering_team %></p>
       <br>
-      <h3>キックオフ</h3>
+      <h3><%= t('views.messages.kickoff') %></h3>
       <p class="card-text"><%= @event.day.strftime("%Y年%m月%d日") %></p>
       <br>
-      <h3>スタジアム</h3>
+      <h3><%= t('views.messages.place') %></h3>
       <p class="card-text"><%= @event.place %></p>
       <br>
-      <h3>募集内容</h3>
+      <h3><%= t('views.messages.content') %></h3>
       <p class="card-text"><%= @event.content %></p>
       <br>
       <% @event.tags.each do |tag| %>
@@ -33,16 +33,16 @@
     </div>
   </div>
 
-<p>こちらの内容で募集します。</p>
+<p><%= t('views.messages.recruit') %></p>
 
 <div class="row center-block text-center">
     <div class="col-1">
     </div>
     <div class="col-5">
-      <input type="button" onclick="history.back()" value="戻る" class="btn btn-outline-secondary btn-block">
+      <input type="button" onclick="history.back()" value=<%= t('views.messages.back') %> class="btn btn-outline-secondary btn-block">
     </div>
     <div class="col-5">
-      <button type="submit" class="btn btn-outline-primary btn-block">新規登録</button>
+      <button type="submit" class="btn btn-outline-primary btn-block"><%= t('views.messages.register') %> </button>
     </div>
 </div>
 <% end %>

@@ -1,4 +1,4 @@
-<h2 class="top"><i class="far fa-futbol" ></i> ログイン</h2>
+<h2 class="top"><i class="far fa-futbol" ></i> <%= t('views.messages.login') %></h2>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
 <div class="user_form">
   <form>
@@ -33,7 +33,7 @@
           <div class="col-1">
           </div>
           <div class="col-10">
-            <button type="submit" class="btn btn-outline-primary btn-block">ログイン</button>
+            <button type="submit" class="btn btn-outline-primary btn-block"><%= t('views.messages.login') %></button>
           </div>
         </div>
     </fieldset>
