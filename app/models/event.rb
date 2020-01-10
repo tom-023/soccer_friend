@@ -6,7 +6,8 @@ class Event < ApplicationRecord
   has_many :tags, through: :taggings
   accepts_nested_attributes_for :taggings, allow_destroy: true
 
-
-
-
+  validates :title, presence: true, length: { maximum: 30 }
+  validates :place, presence: true
+  validates :content, presence: true, length: { maximum: 200 }
+  validates :cheering_team, presence: true
 end

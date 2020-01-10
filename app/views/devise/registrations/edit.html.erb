@@ -1,5 +1,7 @@
 <h2 class="top">編集</h2>
-
+<div class="acount-delete">
+  <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除してよろしいですか?" }, method: :delete, class: 'btn btn-danger delete-btn' %>
+</div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |form| %>
 <%= render "devise/shared/error_messages", resource: resource %>
 <div class="user_form">
@@ -61,25 +63,25 @@
           </div>
           <br>
 
-          <div class="form-group">
-            <h3><%= form.label :password %></h3>
-            <%= form.password_field :password, autocomplete: "new-password", :class => 'form-control' %>
-            <% if @minimum_password_length %>
+          <!-- <div class="form-group">
+            <h3><%#= form.label :password %></h3>
+            <%#= form.password_field :password, autocomplete: "new-password", :class => 'form-control' %>
+            <%# if @minimum_password_length %>
               <br />
-              <em><%= @minimum_password_length %> characters minimum</em>
-            <% end %>
+              <em><%#= @minimum_password_length %> characters minimum</em>
+            <%# end %>
           </div>
           <br>
 
           <div class="form-group">
-            <h3><%= form.label :password_confirmation %></h3>
-            <%= form.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control' %>
+            <h3><%#= form.label :password_confirmation %></h3>
+            <%#= form.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control' %>
           </div>
-          <br>
+          <br> -->
           <!-- 確認パスワードの要求を消してみた -->
             <!-- <div class="field">
-              <%= form.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-              <%= form.password_field :current_password, autocomplete: "current-password" %>
+              <%#= form.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+              <%#= form.password_field :current_password, autocomplete: "current-password" %>
             </div> -->
 
           <div class="row center-block text-center">
@@ -95,12 +97,10 @@
                   <button type="submit" class="btn btn-outline-primary btn-block">編集する</button>
                 <% end %>
             </div>
-            <%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除してよろしいですか?" }, method: :delete, class: 'btn btn-danger delete-btn' %>
           </div>
         </fieldset>
       </form>
 </div>
 <% end %>
-
 <%#= render 'form' %>
 <%#= link_to "Back", :back %>
