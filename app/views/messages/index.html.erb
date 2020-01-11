@@ -33,7 +33,7 @@
 
   <%= form_with(model: [@conversation, @message], class: "message_form") do |form| %>
     <div class="field">
-      <%= form.text_area :body, class: "message_text" %>
+      <%= form.text_area :body, id: "message_text" %>
     </div>
     <%= form.text_field :user_id, value: current_user.id, type: "hidden"  %>
     <%= form.submit t('views.messages.send_message'), class: "message_btn" %>
