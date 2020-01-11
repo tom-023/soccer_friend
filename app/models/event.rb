@@ -8,6 +8,7 @@ class Event < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 30 }
   validates :place, presence: true
+  validates :day,  presence: true
   validates :content, presence: true, length: { maximum: 200 }
   validates :cheering_team, presence: true
 end
