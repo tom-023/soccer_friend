@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  devise_for :users, controllers: {
-          registrations: 'users/registrations'
-  }
+  devise_for :users, controllers: { registrations: 'users/registrations' },
+                     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+                     
   resources :users, only: [:show]
 
   resources :events do

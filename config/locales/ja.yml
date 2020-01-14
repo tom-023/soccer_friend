@@ -283,6 +283,7 @@ ja:
       organizer: "イベント主催者"
       increase: "イベントの参加者が増えました！"
       previous_message: "以前のメッセージ"
+      twitter: "Twitterでログイン"
     pagination:
       first: "&laquo; 最初"
       last: "最後 &raquo;"

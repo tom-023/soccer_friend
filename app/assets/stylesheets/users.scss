@@ -71,3 +71,28 @@ h2 {
   border: medium double #c0c0c0;
   background-color: #f1f2ef;
 }
+
+.sns {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.twitter-btn {
+  padding: 8px 24px;
+  color: white;
+  display: inline-block;
+  opacity: 0.8;
+  border-radius: 4px;
+}
+
+.twitter-btn:hover {
+  opacity: 1;
+}
+
+.twitter {
+  background-color: #55acee;
+}
+
+.fa {
+  margin-right: 5pxå;
+}
