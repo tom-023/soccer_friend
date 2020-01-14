@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_01_12_055259) do
 
   create_table "events", force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.date "day", null: false
+    t.datetime "day", null: false
     t.string "place", default: "", null: false
     t.text "content", default: "", null: false
     t.string "cheering_team", default: "", null: false

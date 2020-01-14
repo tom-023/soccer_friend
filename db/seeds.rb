@@ -7,33 +7,51 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
-
-name = "テスト1号"
-email = "test1gou@gmail.com"
-support_team = "鹿島アントラーズ"
-support_history = "2"
-password = "password"
+name = "テストユーザー"
+email = "test@g.com"
+support_team = "浦和レッズ"
+support_history = "1"
+password = "111111"
+admin = "true"
 User.create!(name: name,
              email: email,
              support_team: support_team,
              support_history: support_history,
              password: password,
              password_confirmation: password,
+             admin: true
             )
 
-name = "テスト2号"
-email = "test2gou@gmail.com"
-support_team = "FC東京"
-support_history = "6"
-password = "password"
-User.create!(name: name,
-             email: email,
-             support_team: support_team,
-             support_history: support_history,
-             password: password,
-             password_confirmation: password,
-            )
+20.times do |n|
+  User.create!(name: "テスト君#{n+1}",
+               email: "testmail#{n+1}@g.com",
+               support_team: "FC東京",
+               support_history: 5,
+               password: 111111,
+               password_confirmation: 111111,
+              )
+end
+
+
+10.times do |i|
+  Event.create!(organizer_id: User.find(i+1).id,
+                title: "募集#{i+1}",
+                day: '2019-01-01',
+                place: "スタジアム#{i+1}",
+                content: "内容#{i+1}",
+                cheering_team: "セレッソ大阪"
+               )
+end
+
+10.times do |i|
+  Event.create!(organizer_id: User.find(i+10).id,
+                title: "募集#{i+10}",
+                day: '2019-01-01',
+                place: "スタジアム#{i+10}",
+                content: "内容#{i+10}",
+                cheering_team: "ベガルタ仙台"
+               )
+end
 
 
 title = "初心者歓迎"
@@ -50,3 +68,38 @@ Tag.create!(title: title)
 
 title = "年齢不問"
 Tag.create!(title: title)
+
+
+4.times do |i|
+  Tagging.create!(event_id: Event.find(i+1).id,
+                  tag_id: 1,
+                 )
+end
+
+4.times do |i|
+  Tagging.create!(event_id: Event.find(i+6).id,
+                  tag_id: 2,
+                 )
+end
+
+4.times do |i|
+  Tagging.create!(event_id: Event.find(i+10).id,
+                  tag_id: 3
+                 )
+end
+
+
+ParticipantManagement.create!(event_id: 20,
+                              participant_id: 1
+                             )
+
+ParticipantManagement.create!(event_id: 19,
+                              participant_id: 2
+                             )
+ParticipantManagement.create!(event_id: 19,
+                              participant_id: 3
+                             )
+
+ParticipantManagement.create!(event_id: 18,
+                              participant_id: 4
+                             )

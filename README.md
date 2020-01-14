@@ -10,6 +10,10 @@
 - Ruby 2.6.3
 - Rails 5.2.3
 
+## テストユーザー
+- email: test@g.com
+- password: 111111
+
 ## 機能一覧
 - ログイン機能
 - SNSログイン機能
@@ -55,6 +59,7 @@ https://cacoo.com/diagrams/y9RGKKS4lKelGtCA/1B3EC
 - rails_admin
 - cancancan
 - letter_opener_web
-- webpacker
-- CarrierWave
+- carrierwave
 - mini_magick
+- omniauth
+- omniauth-twitter
