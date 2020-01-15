@@ -11,14 +11,11 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   before_validation { email.downcase! }
   validates :introduce, length: { maximum: 150 }
-  validates :password, presence: true, length: { minimum: 6 }
-
 
   mount_uploader :icon, ImageUploader
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
-
     unless user
       user = User.create(
         uid:      auth.uid,
@@ -28,7 +25,6 @@ class User < ApplicationRecord
         password: Devise.friendly_token[0, 20]
       )
     end
-
     user
   end
 

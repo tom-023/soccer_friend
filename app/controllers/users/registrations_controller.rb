@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -41,6 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
+
     # アカウント編集後、プロフィール画面に移動する
     def after_update_path_for(resource)
       user_path(id: current_user.id)
@@ -70,7 +71,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up for inactive accounts.
-  def after_inactive_sign_up_path_for(resource)
-    root_path
-  end
+    def after_inactive_sign_up_path_for(resource)
+      root_path
+    end
 end
