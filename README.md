@@ -11,7 +11,7 @@
 - Rails 5.2.3
 
 ## テストユーザー
-- email: test@g.com
+- email: user-test@g.com
 - password: 111111
 
 ## 機能一覧
