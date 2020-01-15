@@ -96,3 +96,13 @@ h2 {
 .fa {
   margin-right: 5pxå;
 }
+
+#error_explanation h2{
+  visibility:hidden;
+}
+
+#error_explanation li{
+  text-align: center;
+  color: #fff;
+  list-style-type: none;
+}

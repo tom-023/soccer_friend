@@ -109,10 +109,13 @@
     </header>
 
     <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
+      <p class="notice"><%= notice %></p>
+    <% elsif alert %>
+      <p class="alert"><%= alert %></p>
+    <% elsif flash[:update] %>
+      <p class="notice"><%= flash[:update] %></p>
+    <% elsif flash[:delete] %>
+      <p class="alert"><%= flash[:delete] %></p>
     <% end %>
 
     <%= yield %>

@@ -1,5 +1,5 @@
 <div class="confirm_form">
-<%= form_with(model: @event, url: events_path, local: true) do |form| %>
+<%= form_with(model: @event, local: true, url: confirm_new_or_edit, method: confirm_form_method) do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :day %>
   <%= form.hidden_field :place %>
