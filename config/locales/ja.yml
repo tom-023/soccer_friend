@@ -287,6 +287,10 @@ ja:
       increase: "イベントの参加者が増えました！"
       previous_message: "以前のメッセージ"
       twitter: "Twitterでログイン"
+      notice_create: "募集を作成しました！"
+      notice_update: "募集を修正しました！"
+      notice_delete: "募集を削除しました！"
+      notice_authority: "権限がありません！"
     pagination:
       first: "&laquo; 最初"
       last: "最後 &raquo;"

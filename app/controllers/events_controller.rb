@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  # before_action :ensure_correct_user, only: [:edit, :update, :destroy]  
+  before_action :set_event, only: [:show]
+  before_action :ensure_current_user, only: [:edit, :update, :destroy]
 
   def index
     @events = Event.all
@@ -20,7 +20,6 @@ class EventsController < ApplicationController
   def new
     if params[:back]
       @event = Event.new(event_params)
-      # @event.taggings.build
     else
       @event = Event.new
     end
@@ -29,6 +28,7 @@ class EventsController < ApplicationController
 
   def confirm
     @event = Event.new(event_params)
+    @event.id = params[:id]
     @event.organizer = current_user
     render :new if @event.invalid?
   end
@@ -39,6 +39,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event.attributes = params[:event] if request.put?
   end
 
   def create
@@ -48,7 +49,7 @@ class EventsController < ApplicationController
       render :new
     else
       if @event.save
-        redirect_to events_path, notice: "イベントを作成しました！"
+        redirect_to events_path, notice: t('views.messages.notice_create')
       else
         render :new
       end
@@ -56,17 +57,17 @@ class EventsController < ApplicationController
   end
 
   def update
-      if @event.update(event_params)
-        flash[:update] = t'flash.update'
-        redirect_to event_path
-      else
-        render :edit
-      end
+    if @event.update(event_params)
+      flash[:update] = t('views.messages.notice_update')
+      redirect_to event_path
+    else
+      render :edit
+    end
   end
 
   def destroy
     @event.destroy
-    flash[:delete] = t'flash.delete'
+    flash[:delete] = t('views.messages.notice_delete')
     redirect_to events_path
   end
 
@@ -77,13 +78,13 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :day, :place, :content, :cheering_team, :organizer_id, tag_ids: [])
+    params.require(:event).permit(:id, :title, :day, :place, :content, :cheering_team, :organizer_id, tag_ids: [])
   end
 
-  def ensure_correct_user
+  def ensure_current_user
     @event = Event.find_by(id:params[:id])
     if current_user == nil || @event.organizer_id != current_user.id
-      flash[:notice] = "権限がありません"
+      flash[:notice] = t('views.messages.notice_authority')
       redirect_to events_path
     end
   end
