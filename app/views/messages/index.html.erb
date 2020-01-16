@@ -3,33 +3,33 @@
 <% end %>
 
 <div class="message_parent">
-  <% @messages.each do |message| %>
-    <% if message.body.present? %>
-        <div class="message_item">
-          <div class="item clearfix">
-            <% if message.user.name == current_user.name %>
-              <div class="my_message">
-                <div class="mycomment">
-                  <p><%= message.body %></p>
-                </div>
-                <div class="message_read">
-                  <% if message.user == current_user %>
-                    <%= message.read ? '既読' : '未読' %>
-                  <% end %>
-                </div>
-              </div>
-            <% else %>
-              <div class="says">
+  <div class="message_item">
+    <% @messages.each do |message| %>
+      <% if message.body.present? %>
+        <div class="item clearfix">
+          <% if message.user.name == current_user.name %>
+            <div class="my_message">
+              <div class="mycomment">
                 <p><%= message.body %></p>
               </div>
-              <div class="message_name_left">
-                <strong><%= message.user.name %></strong>
+              <div class="message_read">
+                <% if message.user == current_user %>
+                  <%= message.read ? '既読' : '未読' %>
+                <% end %>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% else %>
+            <div class="says">
+              <p><%= message.body %></p>
+            </div>
+            <div class="message_name_left">
+              <strong><%= message.user.name %></strong>
+            </div>
+          <% end %>
         </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 
   <%= form_with(model: [@conversation, @message], class: "message_form") do |form| %>
     <div class="field">

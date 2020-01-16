@@ -19,7 +19,6 @@
     </div>
   </div>
 
-
   <div class="container">
     <div class="row">
       <div class="col-lg-4">
@@ -62,11 +61,10 @@
   </div>
 
 
-<div id="contents">
   <h2 class="top"><i class="far fa-futbol" ></i> <%= t('views.messages.index') %></h2>
   <div class="search">
-  <%= form_with(method: :get, url: events_path, local: true) do |f| %>
-    <%= f.select :cheering_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
+    <%= form_with(method: :get, url: events_path, local: true) do |f| %>
+      <%= f.select :cheering_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
                                   "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
                                   "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
                                   "鹿島アントラーズ","浦和レッズ","大宮アルディージャ",
@@ -85,12 +83,11 @@
                                   "サガン鳥栖","V・ファーレン長崎","大分トリニータ",
                                   "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {prompt: t('views.messages.choice')},
                                   {class: 'form-control'} %>
-    <div class="search_btn">
-      <button type="submit" class="btn btn-primary"><%= t('views.messages.team_search') %></button>
-    </div>
-  <% end %>
+      <div class="search_btn">
+        <button type="submit" class="btn btn-primary"><%= t('views.messages.team_search') %></button>
+      </div>
+    <% end %>
   </div>
-
 
   <div class="container">
     <div class="row">
@@ -125,11 +122,14 @@
     <%= paginate @events %>
   </div>
 
-      <h2 class="top"><i class="far fa-futbol" ></i> <%= t('views.messages.ranking') %></h2>
+  <h2 class="top"><i class="fas fa-trophy"></i> <%= t('views.messages.ranking') %></h2>
+    <div class="container">
+      <div class="row">
         <% @all_ranks.each.with_index(1) do |event, i| %>
-          <div class="ranking">
+          <div class="col-lg-6">
+            <div class="ranking">
               <div class="order">
-                <span class="icon_size"><i class="far fa-futbol"></i></span><span class="ranking_font"><%= "第#{i}位" %></span>
+                <span class="icon_size"></span><span class="ranking_font"><%= "第#{i}位" %></span>
               </div>
               <div class="ranking_content">
                 <div class="title_content">
@@ -148,5 +148,8 @@
                   <div class="card-link"><%= link_to t('views.messages.details'), event_path(event.id), class: "btn btn-primary" %></div>
                 </div>
               </div>
+            </div>
           </div>
         <% end %>
+      </div>
+    </div>

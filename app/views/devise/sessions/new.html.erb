@@ -29,18 +29,18 @@
         </div>
       <% end %>
       <br>
-        <div class="row center-block text-center">
-          <div class="col-1">
-          </div>
-          <div class="col-10">
-            <button type="submit" class="btn btn-outline-primary btn-block"><%= t('views.messages.login') %></button>
-          </div>
+      <div class="login">
+        <div class="login_btn">
+          <button type="submit" class="normal_btn"><%= t('views.messages.login') %></button>
         </div>
+        <div class="login_btn">
+          <%= link_to user_twitter_omniauth_authorize_path, class: "twitter_btn" do %>
+            <i class="fab fa-twitter"></i><%= t('views.messages.twitter') %>
+          <% end %>
+        </div>
+      </div>
     </fieldset>
   </form>
-  <div class="sns">
-    <%= link_to t('views.messages.twitter'), user_twitter_omniauth_authorize_path, class: "twitter-btn twitter" %>
-  </div>
 </div>
 <%#= render "devise/shared/links" %>
 <% end %>

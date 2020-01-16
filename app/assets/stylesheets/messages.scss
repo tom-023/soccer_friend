@@ -4,8 +4,9 @@
 
 #message_text {
   border: solid 0.1em #000080;
-  width: 20em;
-  height: 5em;
+  width: 90%;
+  max-width: 500px;
+  height: 150px;
 }
 
 .message_btn {
@@ -17,7 +18,7 @@
     color: #FFF;
     border-bottom: solid 4px #627295;
     border-radius: 3px;
-  }
+}
 
 .message_btn:active {
     /*ボタンを押したとき*/
@@ -27,16 +28,18 @@
     border-bottom: none;
 }
 
-
 .message_parent {
-  padding: 20px;
-  background-image: url("background-img.jpg");
+  width: 90%;
+  max-width: 700px;
+  margin: auto;
 }
 
 .message_item {
-  width: 50%;
-  margin: 0 auto;
+  width: 90%;
+  max-width: 700px;
+  margin: auto;
   background-color: #f8f8ff;
+  border-radius :15px;
 }
 
 .item {
@@ -100,10 +103,9 @@
   padding: 0;
 }
 
-.message_form{
-  width:700px;
-  margin:50px auto;
-  padding: 50px;
+.message_form {
+  margin: 50px auto;
+  padding: 30px;
   border: medium double #c0c0c0;
   background-color: #fff;
 }
