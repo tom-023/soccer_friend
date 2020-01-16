@@ -64,9 +64,14 @@ h2 {
   color: #fff;
 }
 
+.new_user {
+  margin: 0 auto;
+}
+
 .user_form {
+  width: 95%;
   max-width: 700px;
-  margin: 50px auto;
+  margin: 0 auto;
   padding: 50px;
   border: medium double #c0c0c0;
   background-color: #f1f2ef;
@@ -96,6 +101,18 @@ h2 {
 
 .twitter_btn:hover {
   opacity: 1;
+}
+
+.new_btn {
+  display: block;
+  width: 190px;
+  padding: 8px 24px;
+  margin: auto;
+  margin-top: 20px;
+  color: white;
+  opacity: 0.8;
+  border-radius: 4px;
+  background-color: #dd0000;
 }
 
 .fa {
