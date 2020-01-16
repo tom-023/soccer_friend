@@ -1,13 +1,11 @@
-<h2 class="top"><i class="far fa-futbol" ></i> <%= t('views.messages.login') %></h2>
+<h2 class="top"><%= t('views.messages.login') %></h2>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
 <div class="user_form">
   <form>
-    <fieldset>
       <div class="form-group">
         <%= form.label :email %>
         <%= form.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
       </div>
-      <br>
       <div class="form-group">
         <%= form.label :password %>
         <%= form.password_field :password, autocomplete: "new-password", class: 'form-control' %>
@@ -16,7 +14,6 @@
             <em><%= @minimum_password_length %> characters minimum</em>
           <% end %>
       </div>
-      <br>
       <!-- <div class="form-group"> -->
         <%#= form.label :password_confirmation %>
         <%#= form.password_field :password_confirmation, autocomplete: "new-password", :class => 'form-control' %>
@@ -28,7 +25,6 @@
           <%= form.label :remember_me %>
         </div>
       <% end %>
-      <br>
       <div class="login">
         <div class="login_btn">
           <button type="submit" class="normal_btn"><%= t('views.messages.login') %></button>
@@ -38,8 +34,10 @@
             <i class="fab fa-twitter"></i><%= t('views.messages.twitter') %>
           <% end %>
         </div>
+        <div class="login_btn">
+          <%= link_to t('views.messages.new'), new_user_registration_path, class: "new_btn" %>
+        </div>
       </div>
-    </fieldset>
   </form>
 </div>
 <%#= render "devise/shared/links" %>
