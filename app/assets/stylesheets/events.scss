@@ -6,14 +6,22 @@ html {
   height: 100%;
 }
 
-body{
+body {
   height: 100%;
   background-image: image-url("background-img.jpg");
 }
 
+form {
+  width: 95%;
+}
+
+.form-inline {
+  display: inline-block;
+}
+
 .top {
   color: #fff;
-  font-size: 5vw;
+  font-size: 10vw;
 }
 
 .header_img {
@@ -29,7 +37,7 @@ body{
   transform: translate(-50%,-50%);
   /*以下装飾*/
   margin:0;/*余計な隙間を除く*/
-  font-size: 5vw;/*文字サイズ*/
+  font-size: 6vw;/*文字サイズ*/
   border: solid white 5px; /*線で囲う*/
   padding: 20px;/*文字と線の間の余白*/
   color: white;/*文字色*/
@@ -45,20 +53,15 @@ body{
   object-fit: cover;
   }
 
-#contents {
-  margin: 0 auto;
-  padding: 0 80px;
-}
-
 .search {
-  width: 25%;
+  width: 200px;
   margin: auto;
   margin-top: 40px;
 }
 
 .search_btn {
-  text-align: center;
   margin-top: 20px;
+  text-align: center;
 }
 
 .title {
@@ -75,6 +78,7 @@ body{
 }
 
 .details {
+  width: 95%;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -99,6 +103,10 @@ body{
   margin-bottom: 20px;
 }
 
+.form-control-sm {
+  background-color: #fff;
+}
+
 .form_text {
   width: 100%;
   height: 200px;
@@ -118,26 +126,22 @@ body{
 }
 
 .participants {
-  width: 100%;
-  margin: 50px auto;
-}
-
-.participants ul {
+  width: 95%;
+  max-width: 600px;
+  margin: 30px auto;
   background: #fffcf4;
   border-radius :8px;
-  box-shadow :0px 0px 5px silver;
-  padding: 0.5em 0.5em 0.5em 2em;
 }
 
-.participants ul li {
-  line-height: 1.5;
-  padding: 0.5em 0;
-  list-style-type: none
+.participants p {
+  display: inline-block;
+  padding: 1.2em 0.3em 0.3em 1.0em;
 }
 
 .organizer {
-  width: 500px;
-  margin: 50px auto;
+  width: 95%;
+  max-width: 600px;
+  margin: 30px auto;
   background: #f5f5dc;
   border-radius :8px;
   box-shadow :0px 0px 5px silver;
@@ -145,16 +149,14 @@ body{
 
 .organizer p {
   display: inline-block;
-  padding: 1.2em 0.5em 0.5em 2em;
+  padding: 1.2em 0.3em 0.3em 1.0em;
 }
 
 .message {
   padding: 5px 10px;
-  margin: 0 10px;
 }
 
 .ranking {
-  max-width: 500px;
   margin: 40px auto;
 }
 
@@ -170,7 +172,7 @@ body{
 
 .ranking_font {
   font-size: 3em;
-  font-family: "Ravi Prakash", cursive;
+  font-family: "Font Awesome 5 Free";
 }
 
 .ranking_content {
@@ -188,7 +190,6 @@ body{
 }
 
 .cheering_content {
-  // padding-top: 10px;
   padding-left: 20px;
 }
 
@@ -242,7 +243,7 @@ body{
 }
 
 .confirm_form {
-  min-width: 500px;
+  width: 95%;
   max-width: 700px;
   margin: 50px auto;
   padding: 0 30px 40px 30px;

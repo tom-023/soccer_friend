@@ -65,44 +65,43 @@ h2 {
 }
 
 .user_form {
-  width: 700px;
+  max-width: 700px;
   margin: 50px auto;
   padding: 50px;
   border: medium double #c0c0c0;
   background-color: #f1f2ef;
 }
 
-.sns {
-  margin: 10px 0;
+.login {
   text-align: center;
 }
 
-.twitter-btn {
+.normal_btn {
+  width: 190px;
   padding: 8px 24px;
+  margin-bottom: 20px;
   color: white;
-  display: inline-block;
   opacity: 0.8;
   border-radius: 4px;
+  background-color: #008000;
 }
 
-.twitter-btn:hover {
-  opacity: 1;
-}
-
-.twitter {
+.twitter_btn {
+  padding: 8px 24px;
+  color: white;
+  opacity: 0.8;
+  border-radius: 4px;
   background-color: #55acee;
 }
 
+.twitter_btn:hover {
+  opacity: 1;
+}
+
 .fa {
-  margin-right: 5pxå;
+  margin-right: 5px;
 }
 
-#error_explanation h2{
-  visibility:hidden;
-}
-
-#error_explanation li{
-  text-align: center;
-  color: #fff;
-  list-style-type: none;
+.fa-twitter {
+  margin-right: 5px;
 }

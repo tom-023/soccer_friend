@@ -11,89 +11,80 @@
     </div>
   <% end %>
 
-        <form>
-          <fieldset>
-            <div class="form-group">
-              <h3><%= form.label :title, t('views.messages.title') %></h3>
-              <%= form.text_field :title, class: 'form-control' %>
-            </div>
-            <br>
-            <div class="form_group">
-              <h3><%= form.label :day, t('views.messages.kickoff') %></h3>
-            <div class="form-inline">
-              <%= raw sprintf(
-                form.date_select(
-                  :day,
-                  {
-                    start_year: Time.zone.now.year,# 選択可能な開始年
-                    end_year:   Time.zone.now.next_year.year,# 選択可能な終了年
-                    use_two_digit_numbers: true,# 月日を2桁の値で表示
-                    date_separator: '%s',# 年, 月
-                    datetime_separator: '%s',# 日
-                    # time_separator: '%s'# 時
-                  },# オプション
-                  { class: 'form-control' }# htmlオプションを指定する場合は別で指定
-                ),
-                '年 ', '月 ') + '日'# 日 は最後につけ加えられる
-              %>
-            </div>
-            </div>
-            <br>
-            <div class="form-group">
-              <h3><%= form.label :place, t('views.messages.place') %></h3>
-              <%= form.text_field :place, class: 'form-control' %>
-            </div>
-            <br>
-            <div class="form-group">
-              <h3><%= form.label :cheering_team, t('views.messages.cheering_team') %></h3>
-              <%= form.select :cheering_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
-                                              "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
-                                              "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
-                                              "鹿島アントラーズ","浦和レッズ","大宮アルディージャ",
-                                              "ジェフユナイテッド千葉","柏レイソル","FC東京",
-                                              "東京ヴェルディ","FC町田ゼルビア","川崎フロンターレ",
-                                              "横浜F・マリノス","横浜FC","Y.S.C.C.横浜",
-                                              "湘南ベルマーレ","SC相模原","ザスパクサツ群馬",
-                                              "ヴァンフォーレ甲府","松本山雅FC","AC長野パルセイロ",
-                                              "カターレ富山","アルビレックス新潟","ツエーゲン金沢",
-                                              "FC岐阜","清水エスパルス","ジュビロ磐田","藤枝MYFC",
-                                              "アスルクラロ沼津","名古屋グランパス","京都サンガF.C.",
-                                              "ガンバ大阪","セレッソ大阪","ヴィッセル神戸",
-                                              "ファジアーノ岡山","ガイナーレ鳥取","サンフレッチェ広島",
-                                              "レノファ山口FC","カマタマーレ讃岐","徳島ヴォルティス",
-                                              "愛媛FC","アビスパ福岡","ギラヴァンツ北九州",
-                                              "サガン鳥栖","V・ファーレン長崎","大分トリニータ",
-                                              "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {prompt: t('views.messages.choice')},
-                                              {class: 'form-control'} %>
-            </div>
-            <br>
-            <div class="form-group">
-              <h3><%= form.label :content, t('views.messages.content') %><br></h3>
-              <%= form.text_area :content, class: "form_text" %>
-            </div>
-            <br>
-            <div class="form-group">
-              <h3><%= form.label :tag_ids, t('views.messages.tag') %></h3>
-              <div class="form-check">
-                <label type="form-check-label" value="">
-                  <% Tag.all.each do |tag| %>
-                    <%= form.check_box :tag_ids, {multiple: true, checked: tag[:checked],
-                                                    disabled: tag[:disabled], include_hidden: false }, tag[:id] %>
-                    <%= tag.title %>
-                  <% end %>
-                </label>
-              </div>
-            </div>
-            <div class="row center-block text-center">
-                <div class="col-1">
-                </div>
-                <div class="col-5">
-                  <input type="button" onclick="history.back()" value=<%= t('views.messages.back') %> class="btn btn-outline-secondary btn-block">
-                </div>
-                <div class="col-5">
-                  <button type="submit" class="btn btn-outline-primary btn-block"><%= t('views.messages.confirmation-screen') %></button>
-                </div>
-            </div>
-          </fieldset>
-        </form>
+  <form>
+    <div class="form-group">
+      <h3><%= form.label :title, t('views.messages.title') %></h3>
+          <%= form.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form_group">
+      <h3><%= form.label :day, t('views.messages.kickoff') %></h3>
+          <%= raw sprintf(
+              form.date_select(
+                :day,
+              {
+                start_year: Time.zone.now.year,# 選択可能な開始年
+                end_year:   Time.zone.now.next_year.year,# 選択可能な終了年
+                use_two_digit_numbers: true,# 月日を2桁の値で表示
+                date_separator: '%s',# 年, 月
+                datetime_separator: '%s',# 日
+                # time_separator: '%s'# 時
+              },# オプション
+              { class: 'form-control-sm' }# htmlオプションを指定する場合は別で指定
+              ),
+              '年 ', '月 ') + '日'# 日 は最後につけ加えられる
+          %>
+    </div>
+    <div class="form-group">
+      <h3><%= form.label :place, t('views.messages.place') %></h3>
+          <%= form.text_field :place, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <h3><%= form.label :cheering_team, t('views.messages.cheering_team') %></h3>
+          <%= form.select :cheering_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
+                                          "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
+                                          "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
+                                          "鹿島アントラーズ","浦和レッズ","大宮アルディージャ",
+                                          "ジェフユナイテッド千葉","柏レイソル","FC東京",
+                                          "東京ヴェルディ","FC町田ゼルビア","川崎フロンターレ",
+                                          "横浜F・マリノス","横浜FC","Y.S.C.C.横浜",
+                                          "湘南ベルマーレ","SC相模原","ザスパクサツ群馬",
+                                          "ヴァンフォーレ甲府","松本山雅FC","AC長野パルセイロ",
+                                          "カターレ富山","アルビレックス新潟","ツエーゲン金沢",
+                                          "FC岐阜","清水エスパルス","ジュビロ磐田","藤枝MYFC",
+                                          "アスルクラロ沼津","名古屋グランパス","京都サンガF.C.",
+                                          "ガンバ大阪","セレッソ大阪","ヴィッセル神戸",
+                                          "ファジアーノ岡山","ガイナーレ鳥取","サンフレッチェ広島",
+                                          "レノファ山口FC","カマタマーレ讃岐","徳島ヴォルティス",
+                                          "愛媛FC","アビスパ福岡","ギラヴァンツ北九州",
+                                          "サガン鳥栖","V・ファーレン長崎","大分トリニータ",
+                                          "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {prompt: t('views.messages.choice')},
+                                          {class: 'form-control'} %>
+    </div>
+    <div class="form-group">
+      <h3><%= form.label :content, t('views.messages.content') %><br></h3>
+          <%= form.text_area :content, class: "form_text" %>
+    </div>
+    <div class="form-group">
+      <h3><%= form.label :tag_ids, t('views.messages.tag') %></h3>
+        <div class="form-check">
+          <label type="form-check-label" value="">
+            <% Tag.all.each do |tag| %>
+              <%= form.check_box :tag_ids, {multiple: true, checked: tag[:checked],
+                                            disabled: tag[:disabled], include_hidden: false }, tag[:id] %>
+              <%= tag.title %>
+            <% end %>
+          </label>
+        </div>
+    </div>
+    <div class="row center-block text-center">
+      <div class="col-1">
+      </div>
+      <div class="col-5">
+        <input type="button" onclick="history.back()" value=<%= t('views.messages.back') %> class="btn btn-outline-secondary btn-block">
+      </div>
+      <div class="col-5">
+        <button type="submit" class="btn btn-outline-primary btn-block"><%= t('views.messages.confirmation-screen') %></button>
+      </div>
+    </div>
+  </form>
 <% end %>
