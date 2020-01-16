@@ -275,7 +275,7 @@ ja:
       index: "募集一覧"
       team_search: "チーム名で検索"
       details: "詳細"
-      ranking: "人気募集ランキング"
+      ranking: "参加人数ランキング"
       event_details: "イベント詳細"
       delete: "削除"
       cancel_event: "イベントをキャンセルする"
