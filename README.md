@@ -63,3 +63,4 @@ https://cacoo.com/diagrams/y9RGKKS4lKelGtCA/1B3EC
 - mini_magick
 - omniauth
 - omniauth-twitter
+- ransack

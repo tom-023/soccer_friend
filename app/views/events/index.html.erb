@@ -86,7 +86,6 @@
         <button type="submit" class="btn btn-primary"><%= t('views.messages.team_search') %></button>
       </div>
     <% end %>
-
       <%= search_form_for(@q, class: "kickoff_search") do |f| %>
           <%= raw sprintf(
               f.date_select(
@@ -105,8 +104,12 @@
           %>
       <div class="search_btn"><%= f.submit t('views.messages.day_search'), class: "btn btn-primary" %></div>
     <% end %>
+    <div class="kickoff_sort">
+      <div class="btn btn-success sort">
+        <%= sort_link(@q, :day, t('views.messages.sort_day'), default_order: :desc) %>
+      </div>
+    </div>
   </div>
-
   <div class="container">
     <div class="row">
       <% @events.each do |event| %>
