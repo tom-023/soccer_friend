@@ -54,9 +54,21 @@ form {
   }
 
 .search {
-  width: 200px;
+  width: 300px;
   margin: auto;
   margin-top: 40px;
+}
+
+.team_search {
+margin: auto;
+}
+
+.kickoff_search {
+  padding-top: 40px;
+  text-align: center;
+  margin: auto;
+  color: #fff;
+  font-weight: bold;
 }
 
 .search_btn {
@@ -308,7 +320,6 @@ form {
  .begginer {
    // Rspecテスト指定のために使用
  }
-
 
 
 // ↓一時退避

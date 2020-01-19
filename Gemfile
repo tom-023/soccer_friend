@@ -87,3 +87,5 @@ gem 'mini_magick'
 
 gem 'omniauth'
 gem 'omniauth-twitter'
+
+gem 'ransack'

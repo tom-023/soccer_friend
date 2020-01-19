@@ -60,10 +60,9 @@
     </div>
   </div>
 
-
   <h2 class="top"><i class="far fa-futbol" ></i> <%= t('views.messages.index') %></h2>
   <div class="search">
-    <%= form_with(method: :get, url: events_path, local: true) do |f| %>
+    <%= form_with(method: :get, url: events_path, local: true, class: "team_search") do |f| %>
       <%= f.select :cheering_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
                                   "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
                                   "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
@@ -86,6 +85,25 @@
       <div class="search_btn">
         <button type="submit" class="btn btn-primary"><%= t('views.messages.team_search') %></button>
       </div>
+    <% end %>
+
+      <%= search_form_for(@q, class: "kickoff_search") do |f| %>
+          <%= raw sprintf(
+              f.date_select(
+                :day_eq,
+              {
+                start_year: Time.zone.now.year,# 選択可能な開始年
+                end_year:   Time.zone.now.next_year.year,# 選択可能な終了年
+                use_two_digit_numbers: true,# 月日を2桁の値で表示
+                date_separator: '%s',# 年, 月
+                datetime_separator: '%s',# 日
+                # time_separator: '%s'# 時
+              },# オプション
+              { class: 'form-control-sm' }# htmlオプションを指定する場合は別で指定
+              ),
+              '年 ', '月 ') + '日'# 日 は最後につけ加えられる
+          %>
+      <div class="search_btn"><%= f.submit t('views.messages.day_search'), class: "btn btn-primary" %></div>
     <% end %>
   </div>
 
