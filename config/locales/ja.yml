@@ -274,6 +274,8 @@ ja:
       small_message: "サッカー仲間を作りたいけど大勢は苦手な人向けの募集です。"
       index: "募集一覧"
       team_search: "チーム名で検索"
+      day_search: "キックオフ日で検索"
+      sort_day: "キックオフ日順に並べ替える"
       details: "詳細"
       ranking: "参加人数ランキング"
       event_details: "イベント詳細"

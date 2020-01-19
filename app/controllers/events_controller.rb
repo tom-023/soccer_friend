@@ -3,7 +3,9 @@ class EventsController < ApplicationController
   before_action :ensure_current_user, only: %i(edit update destroy)
 
   def index
-    @events = Event.all
+    # @events = Event.all
+    @q = Event.ransack(params[:q])
+    @events = @q.result(distinct: true)
     @all_ranks = Event.ranking
     if params[:syosinsya].present?
       @events = @events.tagjoin(1) #初心者タグのイベント
@@ -12,7 +14,7 @@ class EventsController < ApplicationController
     elsif params[:woman_supporter].present?
       @events = @events.tagjoin(3) #女性限定タグのイベント
     elsif params[:cheering_team]
-      @events = @events.search(params[:cheering_team])
+      @events = @events.team_search(params[:cheering_team])
     end
     @events = @events.display(params[:page])
   end

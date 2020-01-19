@@ -75,15 +75,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-
 gem 'kaminari'
-
 gem 'cancancan'
-
 gem 'rails_admin'
-
 gem 'carrierwave'
 gem 'mini_magick'
-
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'ransack'

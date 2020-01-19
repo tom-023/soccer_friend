@@ -14,6 +14,14 @@ class Event < ApplicationRecord
 
   scope :ranking, -> { find(ParticipantManagement.group(:event_id).order('count(event_id) desc').limit(3).pluck(:event_id)) }
   scope :tagjoin, -> (count){ joins(:tags).where(tags: {id:(count)}) }
-  scope :search, -> (team){ where('cheering_team LIKE ?', "#{team}") }
+  scope :team_search, -> (team){ where('cheering_team LIKE ?', "#{team}") }
   scope :display, -> (number){ page(number).per(4).order(created_at: :desc) }
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[day]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
 end
