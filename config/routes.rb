@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'events#index'
-  # get 'users/show'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   if Rails.env.development?
@@ -16,7 +15,7 @@ Rails.application.routes.draw do
   resources :events do
     collection do
       post :confirm
-      patch :confirm # confirm後のupdateに必要
+      # patch :confirm # confirm後のupdateに必要
     end
     member do
       patch :confirm

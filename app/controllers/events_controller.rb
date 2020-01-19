@@ -1,20 +1,20 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show]
-  before_action :ensure_current_user, only: [:edit, :update, :destroy]
+  before_action :set_event, only: %i(show)
+  before_action :ensure_current_user, only: %i(edit update destroy)
 
   def index
     @events = Event.all
-    @all_ranks = Event.find(ParticipantManagement.group(:event_id).order('count(event_id) desc').limit(3).pluck(:event_id))
+    @all_ranks = Event.ranking
     if params[:syosinsya].present?
-      @events = @events.joins(:tags).where(tags: { id: 1 }) #初心者タグのイベント
+      @events = @events.tagjoin(1) #初心者タグのイベント
     elsif params[:small_group].present?
-      @events = @events.joins(:tags).where(tags: { id: 2 }) #少人数タグのイベント
+      @events = @events.tagjoin(2) #少人数タグのイベント
     elsif params[:woman_supporter].present?
-      @events = @events.joins(:tags).where(tags: { id: 3 }) #女性限定タグのイベント
+      @events = @events.tagjoin(3) #女性限定タグのイベント
     elsif params[:cheering_team]
-      @events = @events.where('cheering_team LIKE ?', "%#{params[:cheering_team]}%")
+      @events = @events.search(params[:cheering_team])
     end
-    @events = @events.page(params[:page]).per(4).order(created_at: :desc)
+    @events = @events.display(params[:page])
   end
 
   def new
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
 
   def confirm
     @event = Event.new(event_params)
-    @event.id = params[:id]
+    # @event.id = params[:id]
     @event.organizer = current_user
     render :new if @event.invalid?
   end
@@ -39,7 +39,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event.attributes = params[:event] if request.put?
+    # @event.attributes = params[:event] if request.put?
   end
 
   def create

@@ -1,26 +1,24 @@
 <%= devise_error_messages %>
 <h2 class="top"><%= t('views.messages.member-registration') %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <%#= render "devise/shared/error_messages", resource: resource %>
 <div class="user_form">
       <form>
         <fieldset>
           <div class="form-group">
-            <h3><%= form.label :name, t('views.messages.name') %></h3>
-            <%= form.text_field :name, class: 'form-control' %>
+            <h3><%= f.label :name, t('views.messages.name') %></h3>
+            <%= f.text_field :name, class: 'form-control' %>
           </div>
           <br>
-
           <div class="form-group">
-            <h3><%= form.label :email, t('views.messages.email') %></h3>
-            <%= form.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+            <h3><%= f.label :email, t('views.messages.email') %></h3>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
           </div>
           <br>
-
           <div class="form-group">
-            <h3><%= form.label :support_team, t('views.messages.support_team') %></h3>
-            <%= form.select :support_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
+            <h3><%= f.label :support_team, t('views.messages.support_team') %></h3>
+            <%= f.select :support_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
                                             "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
                                             "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
                                             "鹿島アントラーズ","浦和レッズ","大宮アルディージャ",
@@ -41,39 +39,34 @@
                                             {class: 'form-control', id: 'exampleSelect1'} %>
           </div>
           <br>
-
           <div class="form-group">
-            <h3><%= form.label :support_history, t('views.messages.support_history') %></h3>
+            <h3><%= f.label :support_history, t('views.messages.support_history') %></h3>
             <div class="form-inline">
-              <%= form.number_field :support_history,min:0,max:100,step:1, class: 'form-control' %>年
+              <%= f.number_field :support_history,min:0,max:100,step:1, class: 'form-control' %>年
             </div>
           </div>
           <br>
-
           <div class="form-group">
-            <h3><%= form.label :introduce, t('views.messages.introduce') %></h3>
-            <%= form.text_area :introduce, class: "form_text" %>
+            <h3><%= f.label :introduce, t('views.messages.introduce') %></h3>
+            <%= f.text_area :introduce, class: "form_text" %>
           </div>
           <br>
-
           <div class="form-group">
-            <h3><%= form.label :icon, t('views.messages.icon') %></h3>
-            <%= form.file_field :icon %>
+            <h3><%= f.label :icon, t('views.messages.icon') %></h3>
+            <%= f.file_field :icon %>
           </div>
           <br>
-
           <div class="form-group">
-            <h3><%= form.label :password, t('views.messages.password') %></h3>
-            <%= form.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+            <h3><%= f.label :password, t('views.messages.password') %></h3>
+            <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
             <% if @minimum_password_length %>
               <em><%= @minimum_password_length %><%= t('views.messages.characters-minimum') %></em>
             <% end %>
           </div>
           <br>
-
           <div class="form-group">
-            <h3><%= form.label :password_confirmation, t('views.messages.password_confirmation') %></h3>
-            <%= form.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+            <h3><%= f.label :password_confirmation, t('views.messages.password_confirmation') %></h3>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
           </div>
           <br>
           <!-- 確認パスワードの要求を消してみた -->
