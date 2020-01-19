@@ -11,4 +11,9 @@ class Event < ApplicationRecord
   validates :day,  presence: true
   validates :content, presence: true, length: { maximum: 200 }
   validates :cheering_team, presence: true
+
+  scope :ranking, -> { find(ParticipantManagement.group(:event_id).order('count(event_id) desc').limit(3).pluck(:event_id)) }
+  scope :tagjoin, -> (count){ joins(:tags).where(tags: {id:(count)}) }
+  scope :search, -> (team){ where('cheering_team LIKE ?', "#{team}") }
+  scope :display, -> (number){ page(number).per(4).order(created_at: :desc) }
 end

@@ -1,10 +1,10 @@
-<%= form_with(model: @event, local: true, url: choose_new_or_edit, class: "event_form") do |form| %>
+<%= form_with(model: event, local: true, url: choose_new_or_edit, class: "event_form") do |form| %>
   <!--エラーがあった時にメッセージを出力する -->
-  <% if @event.errors.any? %>
+  <% if event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, t('views.messages.errors')) %><%= t('views.messages.check-contents') %></h2>
       <ul>
-      <% @event.errors.full_messages.each do |message| %>
+      <% event.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
