@@ -44,13 +44,28 @@
             <br>
             <div class="form-group">
               <h3><%= f.label :introduce, '自己紹介' %></h3>
-              <%= f.text_field :introduce, class: "form_text" %>
+              <%= f.text_area :introduce, class: "form_text" %>
             </div>
             <br>
             <div class="form-group">
               <h3><%= f.label :icon %></h3>
               <%= f.file_field :icon %>
             </div>
+            <br>
+            <% unless action_name == 'edit'%>
+              <div class="form-group">
+                <h3><%= f.label :password, t('views.messages.password') %></h3>
+                <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+                  <% if @minimum_password_length %>
+                    <em><%= @minimum_password_length %><%= t('views.messages.characters-minimum') %></em>
+                  <% end %>
+              </div>
+              <br>
+              <div class="form-group">
+                <h3><%= f.label :password_confirmation, t('views.messages.password_confirmation') %></h3>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+              </div>
+            <% end %>
             <br>
             <!-- <div class="form-group">
               <h3><%= f.label :password %></h3>

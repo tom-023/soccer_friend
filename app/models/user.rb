@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :introduce, length: { maximum: 150 }
 
   mount_uploader :icon, ImageUploader
+  acts_as_paranoid
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
