@@ -2,7 +2,7 @@
 lock '3.6.0'
 
 # デプロイするアプリケーション名
-set :application, 'sakatomo'
+set :application, 'soccer-friend'
 
 # cloneするgitのレポジトリ
 set :repo_url, 'https://github.com/watanabeatsushi/soccer_friend'
@@ -11,7 +11,7 @@ set :repo_url, 'https://github.com/watanabeatsushi/soccer_friend'
 set :branch, ENV['BRANCH'] || 'master'
 
 # deploy先のディレクトリ。
-set :deploy_to, '/var/www/sakatomo'
+set :deploy_to, '/var/www/soccer-friend'
 
 # シンボリックリンクをはるフォルダ・ファイル
 set :linked_files, %w{.env config/secrets.yml}
