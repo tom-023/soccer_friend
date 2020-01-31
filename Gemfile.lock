@@ -409,6 +409,7 @@ DEPENDENCIES
   faker
   fog-aws
   jbuilder (~> 2.5)
+  jquery-rails
   kaminari
   launchy
   letter_opener_web
