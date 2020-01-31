@@ -49,7 +49,13 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener_web'
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
 end
+
+gem 'dotenv-rails' # 開発環境で環境変数を操作するのに必要
+gem 'unicorn', "~> 5.4" # アプリケーションサーバのunicorn
+gem 'mini_racer', platforms: :ruby # デプロイ時に必要
 
 group :development, :test do
   gem 'byebug'
@@ -59,6 +65,11 @@ group :development, :test do
   gem 'faker'
   gem 'launchy'
   gem 'dotenv-rails'
+  gem 'capistrano', '3.6.0' # capistranoのツール一式
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 group :test do
@@ -84,3 +95,5 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'ransack'
 gem 'paranoia'
+gem 'fog-aws'
+gem 'dotenv-rails'
