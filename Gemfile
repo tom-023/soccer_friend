@@ -97,3 +97,4 @@ gem 'ransack'
 gem 'paranoia'
 gem 'fog-aws'
 gem 'dotenv-rails'
+gem "jquery-rails"
