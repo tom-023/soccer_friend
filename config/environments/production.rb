@@ -93,7 +93,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.force_ssl = true
+  # config.force_ssl = true
 
   config.action_mailer.default_url_options = { host: 'https://rocky-beach-45651.herokuapp.com' }
   ActionMailer::Base.delivery_method = :smtp
