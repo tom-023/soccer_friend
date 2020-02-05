@@ -1,5 +1,5 @@
 <h2 class="top"><%= t('views.messages.profile') %></h2>
-<div class="card" style="width: 20rem;">
+<div class="card" style="width: 25rem;">
   <% if @user.icon? %>
     <%= image_tag @user.icon.thumb.url, class: "card-img-top" %>
   <% else %>
@@ -13,7 +13,13 @@
     <p><%= @user.support_history %>年</p>
 
     <div class="profile_introduce"><span><%= t('views.messages.introduce') %></span></div>
-      <p><%= @user.introduce %></p>
+    <p><%= @user.introduce %></p>
+
+    <div class="organizer_event"><span><%= t('views.messages.organizer_event') %></span></div>
+    <% @user.events.each do |event| %>
+      <p><%= link_to event.title, event_path(event) %>  <%= t('views.messages.participant_count') %><%= event.participant_managements.count %>人</p>
+    <% end %>
+
     <% if @user.id ==  current_user.id %>
       <%= link_to t('views.messages.edit'), edit_user_registration_path(@user.id), class: 'btn btn-success' %>
     <% end %>
