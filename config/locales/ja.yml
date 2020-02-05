@@ -293,6 +293,8 @@ ja:
       notice_update: "募集を修正しました！"
       notice_delete: "募集を削除しました！"
       notice_authority: "権限がありません！"
+      organizer_event: "企画したイベント"
+      participant_count: "参加人数:"
     pagination:
       first: "&laquo; 最初"
       last: "最後 &raquo;"
