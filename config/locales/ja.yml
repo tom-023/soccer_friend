@@ -295,6 +295,7 @@ ja:
       notice_authority: "権限がありません！"
       organizer_event: "企画したイベント"
       participant_count: "参加人数:"
+      test_login: "テストユーザーでログイン"
     pagination:
       first: "&laquo; 最初"
       last: "最後 &raquo;"
