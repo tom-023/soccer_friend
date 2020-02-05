@@ -16,10 +16,14 @@
     <p><%= @user.introduce %></p>
 
     <div class="organizer_event"><span><%= t('views.messages.organizer_event') %></span></div>
-    <% @user.events.each do |event| %>
-      <p><%= link_to event.title, event_path(event) %>  <%= t('views.messages.participant_count') %><%= event.participant_managements.count %>人</p>
+    <% @user.events.order(day: :asc).each do |event| %>
+      <div>
+        <%= event.day.strftime("%Y年%m月%d日") %>
+        <p><%= link_to event.title, event_path(event) %>  <%= t('views.messages.participant_count') %><%= event.participant_managements.count %>人</p>
+      </div>
     <% end %>
 
+    <br>
     <% if @user.id ==  current_user.id %>
       <%= link_to t('views.messages.edit'), edit_user_registration_path(@user.id), class: 'btn btn-success' %>
     <% end %>
@@ -27,4 +31,22 @@
       <%= link_to t('views.messages.send_message'), conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: 'btn btn-success' %>
     <% end %>
   </div>
+</div>
+
+<div class="card" style="width: 25rem;">
+<div class="card-body">
+<div class="same_supporter_event"><span>他ユーザーが作成した<%= @user.support_team %>のイベント</span></div>
+<% @events.each do |event| %>
+ <% unless event.organizer_id == current_user.id %>
+  <%= event.title %>
+ <% end %>
+<% end %>
+
+<div class="same_supporter"><span>最近登録した<%= @user.support_team %>サポーターのユーザー</span></div>
+<% @users.each do |user| %>
+ <% unless user.id == @user.id %>
+   <p><%= link_to user.name, user_path(user) %></p>
+ <% end %>
+<% end %>
+</div>
 </div>
