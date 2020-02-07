@@ -114,6 +114,14 @@ text-decoration: none;
   font-family: "Ravi Prakash", cursive;
 }
 
+.slideToggle {
+  float: right;
+}
+
+.card-img-top h3 {
+  cursor: pointer;
+}
+
 .event-index {
   background-color: #c0ffb3;
   border-bottom: double 2px #3a4c09;
