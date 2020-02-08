@@ -6,7 +6,7 @@
             <div class="card-img">
               <div class="event-index">
                 <div class="card-body">
-                  <h3 class="card-title"><i class="far fa-futbol" ></i> <%= event.title %><span class="btn btn-danger slideToggle">開閉</span></h3>
+                  <h3 class="card-title"><i class="far fa-futbol" ></i> <%= event.title %></h3>
                 </div>
               </div>
               <ul class="list-group list-group-toggle">
@@ -15,6 +15,7 @@
                 <li class="list-group-item">【<%= t('views.messages.place') %>】<span class="space"><%= event.place %></span></li>
               </ul>
               <div class="card-body">
+                <span class="btn btn-danger slideToggle">開閉</span>
                 <div class="card-link"><%= link_to t('views.messages.details'), event_path(event.id), class: "btn btn-primary" %></div>
               </div>
             </div>
