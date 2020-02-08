@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable
   has_many :events, foreign_key: :organizer_id, dependent: :destroy
   has_many :participant_managements, foreign_key: :participant_id, dependent: :destroy
+  has_many :participant_events, through: :participant_managements, source: :event
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true,

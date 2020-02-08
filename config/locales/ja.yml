@@ -293,7 +293,11 @@ ja:
       notice_update: "募集を修正しました！"
       notice_delete: "募集を削除しました！"
       notice_authority: "権限がありません！"
-      organizer_event: "企画したイベント"
+      organizer_event: "募集中のイベント"
+      participant_event: "参加中のイベント"
+      not_organizer: "募集しているイベントはありません…"
+      not_participant: "参加しているイベントはありません…"
+      new_event: "サカトモを募集する"
       participant_count: "参加人数:"
       test_login: "テストユーザーでログイン"
     pagination:
