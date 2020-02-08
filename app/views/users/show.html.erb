@@ -16,12 +16,29 @@
     <p><%= @user.introduce %></p>
 
     <div class="organizer_event"><span><%= t('views.messages.organizer_event') %></span></div>
-    <% @user.events.order(day: :asc).each do |event| %>
-      <div>
-        <%= event.day.strftime("%Y年%m月%d日") %>
-        <p><%= link_to event.title, event_path(event) %>  <%= t('views.messages.participant_count') %><%= event.participant_managements.count %>人</p>
-      </div>
-    <% end %>
+      <% if @user.events.count == 0 %>
+        <p><%= t('views.messages.not_organizer') %></p>
+        <p><%= link_to t('views.messages.new_event'), new_event_path, class: 'btn btn-danger' %></p>
+      <% else %>
+        <% @user.events.order(day: :asc).each do |event| %>
+          <div>
+            <%= event.day.strftime("%Y年%m月%d日") %>
+            <p><%= link_to event.title, event_path(event) %>  <%= t('views.messages.participant_count') %><%= event.participant_managements.count %>人</p>
+          </div>
+        <% end %>
+      <% end %>
+
+    <div class="participant_event"><span><%= t('views.messages.participant_event') %></span></div>
+      <% if @user.participant_events.count == 0 %>
+        <p><%= t('views.messages.not_participant') %></p>
+      <% else %>
+        <% @user.participant_events.order(day: :asc).each do |event| %>
+          <div>
+            <%= event.day.strftime("%Y年%m月%d日") %>
+            <p><%= link_to event.title, event_path(event) %>  <%= t('views.messages.participant_count') %><%= event.participant_managements.count %>人</p>
+          </div>
+        <% end %>
+      <% end %>
 
     <br>
     <% if @user.id ==  current_user.id %>
@@ -38,7 +55,7 @@
 <div class="same_supporter_event"><span>他ユーザーが作成した<%= @user.support_team %>のイベント</span></div>
 <% @events.each do |event| %>
  <% unless event.organizer_id == current_user.id %>
-  <%= event.title %>
+  <p><%= link_to event.title, event_path(event) %></p>
  <% end %>
 <% end %>
 
