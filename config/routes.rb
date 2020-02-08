@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   resources :events do
     collection do
       post :confirm
+      get :syosinsya
+      get :woman_supporter
+      get :small_group
       # patch :confirm # confirm後のupdateに必要?
     end
     member do

@@ -1,19 +1,13 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i(show)
   before_action :ensure_current_user, only: %i(edit update destroy)
+  before_action :search_result, only: %i(syosinsya woman_supporter small_group)
 
   def index
-    # @events = Event.all
     @q = Event.ransack(params[:q])
     @events = @q.result(distinct: true)
     @all_ranks = Event.ranking
-    if params[:syosinsya].present?
-      @events = @events.tagjoin(1) #初心者タグのイベント
-    elsif params[:small_group].present?
-      @events = @events.tagjoin(2) #少人数タグのイベント
-    elsif params[:woman_supporter].present?
-      @events = @events.tagjoin(3) #女性限定タグのイベント
-    elsif params[:cheering_team]
+    if params[:cheering_team]
       @events = @events.team_search(params[:cheering_team])
     end
     @events = @events.display(params[:page])
@@ -73,6 +67,18 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
+  def syosinsya
+    @events = @events.tagjoin(1) if params[:syosinsya].present?
+  end
+
+  def woman_supporter
+    @events = @events.tagjoin(3) if params[:woman_supporter].present?
+  end
+
+  def small_group
+    @events = @events.tagjoin(2) if params[:small_group].present?
+  end
+
   private
 
   def set_event
@@ -81,6 +87,10 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:id, :title, :day, :place, :content, :cheering_team, :organizer_id, tag_ids: [])
+  end
+
+  def search_result
+    @events = Event.select(:id, :title, :place, :cheering_team, :day)
   end
 
   def ensure_current_user
