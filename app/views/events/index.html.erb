@@ -62,7 +62,7 @@
 
   <h2 class="top"><i class="far fa-futbol" ></i> <%= t('views.messages.index') %></h2>
   <div class="search">
-    <%= form_with(method: :get, url: events_path, local: true, class: "team_search") do |f| %>
+    <%= search_form_for(@q, url:search_events_path, class: "kickoff_search") do |f| %>
       <%= f.select :cheering_team,["北海道コンサドーレ札幌","ヴァンラーレ八戸","いわてグルージャ盛岡",
                                   "ブラウブリッツ秋田","モンテディオ山形","ベガルタ仙台",
                                   "福島ユナイテッドFC","水戸ホーリーホック","栃木SC",
@@ -80,13 +80,8 @@
                                   "レノファ山口FC","カマタマーレ讃岐","徳島ヴォルティス",
                                   "愛媛FC","アビスパ福岡","ギラヴァンツ北九州",
                                   "サガン鳥栖","V・ファーレン長崎","大分トリニータ",
-                                  "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {prompt: t('views.messages.choice')},
-                                  {class: 'form-control'} %>
-      <div class="search_btn">
-        <button type="submit" class="btn btn-primary"><%= t('views.messages.team_search') %></button>
-      </div>
-    <% end %>
-    <%= search_form_for(@q, class: "kickoff_search") do |f| %>
+                                  "ロアッソ熊本","鹿児島ユナイテッドFC","FC琉球"], {prompt: t('views.messages.team_search')},
+                                  {class: 'form-control team_search'} %>
       <%= raw sprintf(
         f.date_select(
           :day_eq,
@@ -102,8 +97,9 @@
            ),
            '年 ', '月 ') + '日'# 日 は最後につけ加えられる
       %>
-     <div class="search_btn"><%= f.submit t('views.messages.day_search'), class: "btn btn-primary" %></div>
+      <div class="search_btn"><%= f.submit t('views.messages.search'), class: "btn btn-primary" %></div>
     <% end %>
+
     <div class="kickoff_sort">
       <div class="btn btn-success sort">
         <%= sort_link(@q, :day, t('views.messages.sort_day'), default_order: :desc) %>

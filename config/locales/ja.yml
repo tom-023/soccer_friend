@@ -273,8 +273,8 @@ ja:
       small_search: "少人数募集を検索する"
       small_message: "サッカー仲間を作りたいけど大勢は苦手な人向けの募集です。"
       index: "募集一覧"
-      team_search: "チーム名で検索"
-      day_search: "キックオフ日で検索"
+      team_search: "チーム名を選択する"
+      search: "募集を検索"
       sort_day: "キックオフ日順に並べ替える"
       details: "詳細"
       ranking: "参加人数ランキング"
@@ -300,6 +300,7 @@ ja:
       new_event: "サカトモを募集する"
       participant_count: "参加人数:"
       test_login: "テストユーザーでログイン"
+      search_result: "検索結果"
     pagination:
       first: "&laquo; 最初"
       last: "最後 &raquo;"

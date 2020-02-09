@@ -5,12 +5,8 @@ class EventsController < ApplicationController
 
   def index
     @q = Event.ransack(params[:q])
-    @events = @q.result(distinct: true)
+    @events = @q.result(distinct: true).display(params[:page])
     @all_ranks = Event.ranking
-    if params[:cheering_team]
-      @events = @events.team_search(params[:cheering_team])
-    end
-    @events = @events.display(params[:page])
   end
 
   def new
@@ -79,6 +75,11 @@ class EventsController < ApplicationController
     @events = @events.tagjoin(2) if params[:small_group].present?
   end
 
+  def search
+    @q = Event.search(search_params)
+    @events = @q.result(distinct: true)
+  end
+
   private
 
   def set_event
@@ -91,6 +92,10 @@ class EventsController < ApplicationController
 
   def search_result
     @events = Event.select(:id, :title, :place, :cheering_team, :day)
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 
   def ensure_current_user
