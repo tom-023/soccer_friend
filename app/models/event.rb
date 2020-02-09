@@ -18,7 +18,7 @@ class Event < ApplicationRecord
   scope :display, -> (number){ page(number).per(4).order(created_at: :desc) }
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[day]
+    %w(cheering_team day)
   end
 
   def self.ransackable_associations(auth_object = nil)
