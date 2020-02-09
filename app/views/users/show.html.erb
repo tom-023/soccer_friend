@@ -51,19 +51,31 @@
 </div>
 
 <div class="card" style="width: 30rem;">
-<div class="card-body">
-<div class="same_supporter_event"><span>他ユーザーが作成した<%= @user.support_team %>のイベント</span></div>
-<% @events.each do |event| %>
- <% unless event.organizer_id == current_user.id %>
-  <p><%= link_to event.title, event_path(event) %></p>
- <% end %>
-<% end %>
+  <div class="card-body">
+    <div class="same_supporter_event"><span><%= t('views.messages.other_user') %><%= @user.support_team %>の<%= t('views.messages.event') %></span></div>
+    <% @events.each do |event| %>
+      <% unless event.organizer_id == current_user.id %>
+        <p><%= link_to event.title, event_path(event) %></p>
+      <% end %>
+    <% end %>
 
-<div class="same_supporter"><span>最近登録した<%= @user.support_team %>サポーターのユーザー</span></div>
-<% @users.each do |user| %>
- <% unless user.id == @user.id %>
-   <p><%= link_to user.name, user_path(user) %></p>
- <% end %>
-<% end %>
-</div>
+    <div class="same_supporter"><span><%= t('views.messages.register_user') %><%= @user.support_team %><%= t('views.messages.supporter_same') %></span></div>
+    <% @users.each do |user| %>
+      <% unless user.id == @user.id %>
+        <p><%= link_to user.name, user_path(user) %></p>
+      <% end %>
+    <% end %>
+
+    <% if @user.id == current_user.id %>
+      <div class="message_users"><span><%= t('views.messages.message_active') %></span></div>
+      <% @conversations.each do |conversation| %>
+        <% if conversation.sender_id == current_user.id && conversation.messages.present? %>
+          <div class="message_active">
+            <%= link_to conversation.recipient.name, user_path(id: conversation.recipient.id) %>
+            <%= link_to t('views.messages.send_message'), conversations_path(sender_id: current_user.id, recipient_id: conversation.recipient.id), method: :post, class: 'btn btn-success' %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
