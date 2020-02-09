@@ -1,6 +1,8 @@
 <%= devise_error_messages %>
 <h2 class="top"><%= t('views.messages.edit') %></h2>
-<div class="acount-delete">
-  <%= button_to t('views.messages.acount-delete'), registration_path(resource_name), data: { confirm: t('views.messages.really-delete') }, method: :delete, class: 'btn btn-danger delete-btn' %>
-</div>
+<% unless @user.email == "user-test@g.com" %>
+  <div class="acount-delete">
+    <%= button_to t('views.messages.acount-delete'), registration_path(resource_name), data: { confirm: t('views.messages.really-delete') }, method: :delete, class: 'btn btn-danger delete-btn' %>
+  </div>
+<% end %>
 <%= render 'form', user: @user %>
