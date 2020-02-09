@@ -108,6 +108,21 @@ h2 {
   color: #fff;
 }
 
+.message_users {
+  display: inline-block;
+  background-color: #800000;
+  margin-bottom: 10px;
+}
+
+.message_users span{
+  padding: 10px;
+  color: #fff;
+}
+
+.message_active {
+  margin: 10px 0;
+}
+
 .new_user {
   margin: 0 auto;
 }
