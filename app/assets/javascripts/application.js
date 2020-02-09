@@ -13,6 +13,8 @@
 
 //= require activestorage
 //= require turbolinks
+//= require jquery
+//= require jquery_ujs
 //= require jquery/dist/jquery.js
 //= require bootstrap/dist/js/bootstrap.min
 //= require bootstrap-honoka/dist/js/bootstrap.min.js

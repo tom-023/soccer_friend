@@ -5,12 +5,13 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
+
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     omniauth_callbacks: 'users/omniauth_callbacks'
                                   }
-  devise_scope :user do
-     root to: "devise/sessions#new"
-  end
 
   resources :users, only: [:show]
 
