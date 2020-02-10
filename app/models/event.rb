@@ -13,7 +13,7 @@ class Event < ApplicationRecord
   validates :cheering_team, presence: true
 
   scope :ranking, -> { find(ParticipantManagement.group(:event_id).order('count(event_id) desc').limit(3).pluck(:event_id)) }
-  # scope :tagjoin, -> (count){ joins(:tags).where(tags: {id:(count)}) }
+  scope :tagjoin, -> (count){ joins(:tags).where(tags: {id:(count)}) }
   # scope :team_search, -> (team){ where('cheering_team LIKE ?', "#{team}") }
   scope :display, -> (number){ page(number).per(10).order(created_at: :desc) }
   scope :day_sort, -> (number){ page(number).per(10).order(day: :desc) }
