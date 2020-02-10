@@ -1,0 +1,8 @@
+<% participant_management = current_user.participant_managements.find_by(event_id: event.id) %>
+  <% unless event.organizer_id == current_user.id %>
+    <% if participant_management.present? %>
+      <%= link_to t('views.messages.cancel_event'), participant_management_path(id: participant_management.id), method: :delete, remote: true, class: 'btn btn-danger' %>
+    <% else %>
+      <%= link_to t('views.messages.jopin_event'), participant_managements_path(event_id: event.id), method: :post, remote: true, class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
