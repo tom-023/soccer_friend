@@ -39,18 +39,11 @@
     </div>
 
   <h3 class="h3-title"><%= t('views.messages.participant_index') %></h3>
-    <div class="participants">
-      <% @event_participant_users.each do |event_participant_user| %>
-          <div>
-            <p><%= link_to "#{event_participant_user.name}", user_path(event_participant_user.id) %></p>
-            <% if event_participant_user.id != current_user.id %>
-              <span class="message">
-                <%= link_to t('views.messages.send_message'), conversations_path(sender_id: current_user.id, recipient_id: event_participant_user.id), method: :post, class: 'btn btn-success' %>
-              </span>
-            <% end %>
-          </div>
-      <% end %>
+    <div id="participants">
+      <%= render 'participants', event: @event %>
     </div>
+
+
 
   <h3 class="h3-title"><%= t('views.messages.organizer') %></h3>
     <div class="organizer">

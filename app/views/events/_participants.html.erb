@@ -1,0 +1,13 @@
+<% event_participant_users = event.participant_users %>
+<% event_participant_users.each do |event_participant_user| %>
+  <div>
+  <% if event_participant_user.id.present? %>
+    <p><%= link_to "#{event_participant_user.name}", user_path(event_participant_user.id) %></p>
+    <% if event_participant_user.id != current_user.id %>
+      <span class="message">
+        <%= link_to t('views.messages.send_message'), conversations_path(sender_id: current_user.id, recipient_id: event_participant_user.id), method: :post, class: 'btn btn-success' %>
+      </span>
+    <% end %>
+  <% end %>
+  </div>
+<% end %>
