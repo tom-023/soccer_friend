@@ -30,14 +30,8 @@
           <% end %>
         <% end %>
         <br>
-        <div class="join">
-          <% unless @event.organizer_id == current_user.id %>
-            <% if @participant_management.present? %>
-              <%= link_to t('views.messages.cancel_event'), participant_management_path(id: @participant_management.id), method: :delete, class: 'btn btn-danger' %>
-            <% else %>
-              <%= link_to t('views.messages.jopin_event'), participant_managements_path(event_id: @event.id), method: :post, class: 'btn btn-primary' %>
-            <% end %>
-          <% end %>
+        <div id="join">
+          <%= render 'management', event: @event %>
         </div>
         <br>
         <input type="button" onclick="history.back()" value=<%= t('views.messages.back') %> class="btn btn-outline-secondary">
@@ -45,17 +39,8 @@
     </div>
 
   <h3 class="h3-title"><%= t('views.messages.participant_index') %></h3>
-    <div class="participants">
-      <% @event_participant_users.each do |event_participant_user| %>
-          <div>
-            <p><%= link_to "#{event_participant_user.name}", user_path(event_participant_user.id) %></p>
-            <% if event_participant_user.id != current_user.id %>
-              <span class="message">
-                <%= link_to t('views.messages.send_message'), conversations_path(sender_id: current_user.id, recipient_id: event_participant_user.id), method: :post, class: 'btn btn-success' %>
-              </span>
-            <% end %>
-          </div>
-      <% end %>
+    <div id="participants">
+      <%= render 'participants', event: @event %>
     </div>
 
   <h3 class="h3-title"><%= t('views.messages.organizer') %></h3>

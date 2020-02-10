@@ -7,6 +7,9 @@ class EventsController < ApplicationController
     @q = Event.ransack(params[:q])
     @events = @q.result(distinct: true).display(params[:page])
     @all_ranks = Event.ranking
+    if params[:sort]
+      @events = Event.day_sort(params[:page])
+    end
   end
 
   def new
@@ -26,8 +29,8 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event_participant_users = @event.participant_users
-    @participant_management = current_user.participant_managements.find_by(event_id: @event.id)
+    #@event_participant_users = @event.participant_users
+    #@participant_management = current_user.participant_managements.find_by(event_id: @event.id)
   end
 
   def edit
