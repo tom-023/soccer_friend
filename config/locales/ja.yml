@@ -285,6 +285,8 @@ ja:
       participant_index: "参加者一覧"
       other_user: "他ユーザーが作成した"
       event: "イベント"
+      not_search: "検索結果と一致する募集はありません…"
+      lets_new: "さぁ！あなたが募集しましょう！"
       register_user: "最近登録した"
       supporter_same: "サポーターのユーザー"
       send_message: "メッセージ"

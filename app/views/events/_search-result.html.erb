@@ -1,3 +1,4 @@
+<% if @events.present? %>
   <div class="container">
     <div class="row">
       <% @events.each do |event| %>
@@ -25,3 +26,10 @@
     </div>
     <br>
   </div>
+<% else %>
+  <div class="not_event">
+    <p><%= t('views.messages.not_search') %></p>
+    <p><%= t('views.messages.lets_new') %></p>
+    <%= link_to t('views.messages.new_event'), new_event_path, class: 'btn btn-danger' %>
+  </div>
+<% end %>
