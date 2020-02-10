@@ -1,0 +1,32 @@
+<div class="kickoff_sort">
+  <div class="btn btn-success sort">
+    <%= link_to t('views.messages.sort_day'), events_path(sort: "true"), remote: true %>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% events.each do |event| %>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-img-top">
+            <div class="event-index">
+              <div class="card-body">
+                <h3 class="card-title"><i class="far fa-futbol" ></i> <%= event.title %></h3>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">【<%= t('views.messages.support_team') %>】<span class="space"><%= event.cheering_team %></span></li>
+              <li class="list-group-item">【<%= t('views.messages.kickoff') %>】<span class="space"><%= event.day.strftime('%Y年%m月%d日') %></span></li>
+              <li class="list-group-item">【<%= t('views.messages.place') %>】<span class="space"><%= event.place %></span></li>
+            </ul>
+            <div class="card-body">
+              <div class="card-link"><%= link_to t('views.messages.details'), event_path(event.id), class: "btn btn-primary" %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <%= paginate events %>
+</div>

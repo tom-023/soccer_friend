@@ -7,6 +7,9 @@ class EventsController < ApplicationController
     @q = Event.ransack(params[:q])
     @events = @q.result(distinct: true).display(params[:page])
     @all_ranks = Event.ranking
+    if params[:sort]
+      @events = Event.day_sort(params[:page])
+    end
   end
 
   def new
