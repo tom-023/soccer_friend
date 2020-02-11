@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       get :woman_supporter
       get :small_group
       get :search
-      # patch :confirm # confirm後のupdateに必要?
+      #patch :confirm # confirm後のupdateに必要?
     end
     member do
       patch :confirm

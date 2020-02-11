@@ -67,13 +67,7 @@
     <div class="form-group">
       <h3><%= form.label :tag_ids, t('views.messages.tag') %></h3>
         <div class="form-check">
-          <label type="form-check-label" value="">
-            <% Tag.all.each do |tag| %>
-              <%= form.check_box :tag_ids, {multiple: true, checked: tag[:checked],
-                                            disabled: tag[:disabled], include_hidden: false }, tag[:id] %>
-              <%= tag.title %>
-            <% end %>
-          </label>
+          <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :title) %>
         </div>
     </div>
     <div class="row center-block text-center">

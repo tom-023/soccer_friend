@@ -16,6 +16,6 @@ module EventsHelper
   end
 
   def confirm_form_method
-    @event.id ? 'patch' : 'post' # 作成時はpost, 編集時は patchを指定
+    @event.id ? :patch : :post # 作成時はpost, 編集時は patchを指定
   end
 end

@@ -23,7 +23,7 @@ class EventsController < ApplicationController
 
   def confirm
     @event = Event.new(event_params)
-    # @event.id = params[:id]
+    @event.id = params[:id]
     @event.organizer = current_user
     render :new if @event.invalid?
   end
@@ -34,7 +34,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    # @event.attributes = params[:event] if request.put?
+    #@event.attributes = params[:event] if request.put?
   end
 
   def create
@@ -102,7 +102,7 @@ class EventsController < ApplicationController
   end
 
   def ensure_current_user
-    @event = Event.find_by(id:params[:id])
+    @event = Event.find_by(id: params[:id])
     if current_user == nil || @event.organizer_id != current_user.id
       flash[:notice] = t('views.messages.notice_authority')
       redirect_to events_path
