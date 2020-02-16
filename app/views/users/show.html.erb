@@ -69,7 +69,7 @@
 
       <div class="message_users"><span><%= t('views.messages.message_active') %></span></div>
       <% @conversations.each do |conversation| %>
-        <% if conversation.sender_id == current_user.id && conversation.messages.present? %>
+        <% if (conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id ) && conversation.messages.present? %>
           <div class="message_active">
             <%= link_to conversation.recipient.name, user_path(id: conversation.recipient.id) %>
             <%= link_to t('views.messages.send_message'), conversations_path(sender_id: current_user.id, recipient_id: conversation.recipient.id), method: :post, class: 'btn btn-success' %>
